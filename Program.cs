@@ -1,7 +1,17 @@
-﻿internal class Program
+﻿using DAW.PRO._2.ProyectoRoguelike;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Console.CursorVisible = false;
+        Mapa CasaPepe = new Mapa(95,30);
+        while (true)
+        {
+            CasaPepe.Dibuja();
+            Console.ReadLine();
+        }
     }
+
+
 }
