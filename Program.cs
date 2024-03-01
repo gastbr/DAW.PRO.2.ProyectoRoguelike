@@ -8,7 +8,7 @@ internal class Program
         Mapa CasaPepe = new Mapa(95,30);
         while (true)
         {
-            CasaPepe.Dibuja();
+            CasaPepe.dibuja();
             Console.ReadLine();
         }
     }

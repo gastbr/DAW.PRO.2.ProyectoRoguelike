@@ -13,7 +13,7 @@ namespace DAW.PRO._2.ProyectoRoguelike
             terreno = Terreno.Muro;
         }
 
-        public void Dibuja()
+        public void dibuja()
         {
             switch (terreno)
             {
@@ -42,6 +42,14 @@ namespace DAW.PRO._2.ProyectoRoguelike
                     Console.Write("?");
                     break;
             }
+        }
+        public Terreno getTerreno()
+        {
+            return terreno;
+        }
+        public void setTerreno(Terreno nuevo)
+        {
+            terreno = nuevo;
         }
     }
 }
