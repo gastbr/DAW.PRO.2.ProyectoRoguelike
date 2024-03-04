@@ -67,7 +67,7 @@
             // La función recibe como parámetro el porcentaje de suelo que se busca, basado en el ancho y alto del mapa Con ese porcentaje, se calcula la cantidad de baldosas de suelo que se crearán (cantidadSuelo). De esta forma, no hace falta tener en cuenta el ancho y alto del mapa para establecer la cantidad de suelo que queremos.
             // caminado es un contador que controla la cantidad de suelo construido (el bucle se repetirá hasta que sea igual que cantidadSuelo).
             // x, y indican la posición actual del RW.
-
+            
             Random rng = new Random();
             rng.Next(30); // se descartan los primeros 30 números aleatorios del objeto Random
             int cantidadSuelo = (ancho * alto) * (porcentajeSuelo / 100);
@@ -106,7 +106,6 @@
                 }
             }
             while (caminado < cantidadSuelo);
-
 
         }
     }
