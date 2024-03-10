@@ -8,11 +8,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Muro : Clases.Celda
     {
-        public Muro()
-        {
-            x = 0;
-            y = 0;
+        public override void dibuja() {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("█");
         }
-        public override void dibuja() { }
     }
 }

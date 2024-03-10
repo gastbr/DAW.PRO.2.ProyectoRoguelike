@@ -10,7 +10,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     {
         public int valor;
         public int efecto;
-        public void aplicar(Jugador jugador, int stat)
+        public void aplicar(Entidad jugador, int stat)
         {
             // aplicar el efecto (+vida, +fuerza o +defensa) a la stat correspondiente del jugador correspondiente
         }

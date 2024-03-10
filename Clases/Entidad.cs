@@ -11,10 +11,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public string nombre;
         public int x;
         public int y;
+        public int salaActual;
+        public enum Profesion { Guerrero, Mago, Picaro, PNJ, Tienda };
+        public Profesion profesion;
         public enum Direccion { arriba, abajo, izquierda, derecha };
         public Direccion direccion;
         public int oro;
         public int nivel;
+        public int experiencia;
         public int vidaActual;
         public int vidaMax;
         public int ataque;
@@ -39,12 +43,18 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public void setX(int x) { this.x = x; }
         public int getY() { return y; }
         public void setY(int y) { this.y = y; }
+        public int getSalaActual() { return salaActual; }
+        public void setSalaActual(int sala) { this.salaActual = sala; }
+        public Profesion getProfesion() { return profesion; }
+        public void setProfesion(Profesion profesion) { this.profesion = profesion; }
         public Direccion getDireccion() { return direccion; }
         public void setDireccion(Direccion direccion) { this.direccion = direccion; }
         public int getOro() { return oro; }
         public void setOro(int oro) { this.oro = oro; }
         public int getNivel() { return nivel; }
         public void setNivel(int nivel) { this.nivel = nivel; }
+        public int getExperiencia() { return experiencia; }
+        public void setExperiencia(int exp) { experiencia = exp; }
         public int getVidaActual() { return vidaActual; }
         public void setVidaActual(int vida) { this.vidaActual = vida; }
         public int getVidaMax() { return vidaMax; }

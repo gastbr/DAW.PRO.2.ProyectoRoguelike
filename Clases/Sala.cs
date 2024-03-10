@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAW.PRO._2.ProyectoRoguelike.SubC_Celda;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,44 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal class Sala
     {
+        int ancho;
+        int alto;
         List<Objeto> objetos;
         List<Entidad> entidades;
         Celda[,] celdas;
         public Sala()
         {
-            celdas = new Celda[,] { }; //Poner un tamaño fijo acorde a la ventana de la consola
+            this.ancho = 100;
+            this.alto = 27;
+            celdas = new Celda[ancho, alto]; // Poner un tamaño fijo acorde a la ventana de la consola
+            generaSala();
         }
-        public void dibuja() { }
-        public void generaMapa() { } // Random Walker
+        public void dibuja()
+        {
+            int posX = 20;
+            int posY = 1;
+            for (int i = 0; i < alto; i++)
+            {
+                Console.SetCursorPosition(posX, posY + i);
+                for (int j = 0; j < ancho; j++)
+                {
+                    celdas[j, i].dibuja();
+                }
+            }
+        }
+        void generaSala()
+        {
+            for (int i = 0; i < alto; i++)
+            {
+                for (int j = 0; j < ancho; j++)
+                {
+                    celdas[j, i] = new Muro();
+                }
+            }
+        }
+        void tiraMuro()
+        {
+
+        }
     }
 }

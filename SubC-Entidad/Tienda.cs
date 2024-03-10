@@ -12,12 +12,15 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
     {
         public Tienda()
         {
-            nombre = "";
+            nombre = "Miguelillo";
             x = 0;
             y = 0;
+            salaActual = 0;
             direccion = Direccion.derecha;
+            profesion = Profesion.Tienda;
             oro = 1025648;
             nivel = 4800;
+            experiencia = 999999999;
             vidaMax = 7;
             vidaActual = 7;
             ataque = 8650;

@@ -8,11 +8,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Salida : Clases.Celda
     {
-        public Salida()
-        {
-            x = 0;
-            y = 0;
-        }
         public override void dibuja() { }
     }
 }

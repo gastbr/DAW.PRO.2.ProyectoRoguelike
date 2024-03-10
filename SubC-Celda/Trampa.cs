@@ -10,11 +10,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Trampa : Celda
     {
-        public Trampa()
-        {
-            x = 0;
-            y = 0;
-        }
         public override void dibuja() { }
     }
 }

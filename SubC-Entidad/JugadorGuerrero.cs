@@ -16,11 +16,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nombre = "";
             x = 0;
             y = 0;
+            salaActual = 0;
             direccion = Direccion.derecha;
+            profesion = Profesion.Guerrero;
             oro = 0;
             nivel = 1;
+            experiencia = 0;
             vidaMax = 45;
-            vidaActual = 45;
+            vidaActual = 4;
             ataque = 5;
             defensa = 0;
         }
