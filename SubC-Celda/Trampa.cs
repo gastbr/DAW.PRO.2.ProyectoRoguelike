@@ -10,6 +10,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Trampa : Celda
     {
-        public override void dibuja() { }
+        public override void dibuja()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("֍");
+        }
     }
 }

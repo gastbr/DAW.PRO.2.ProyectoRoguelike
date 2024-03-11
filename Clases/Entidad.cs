@@ -26,6 +26,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public List<Objeto> inventario;
         public Objeto arma;
         public Objeto armadura;
+        public abstract void dibuja();
         public void camina(Direccion direccion)
         {
             this.direccion = direccion;
@@ -36,6 +37,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 case Direccion.izquierda: x--; break;
                 case Direccion.derecha: x++; break;
             }
+        }
+        public void spawn(int x, int y)
+        {
+            setX(x);
+            setY(y);
         }
         public string getNombre() { return nombre; }
         public void setNombre(string nombre) { this.nombre = nombre; }

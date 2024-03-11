@@ -23,11 +23,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nivel = 1;
             experiencia = 0;
             vidaMax = 45;
-            vidaActual = 4;
+            vidaActual = 45;
             ataque = 5;
             defensa = 0;
         }
-
+        public override void dibuja()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("a");
+        }
         public void atacaMelee()
         {
             throw new NotImplementedException();

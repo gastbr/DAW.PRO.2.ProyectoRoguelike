@@ -12,7 +12,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
     {
         public Tienda()
         {
-            nombre = "Miguelillo";
+            nombre = "El tendero Miguelillo";
             x = 0;
             y = 0;
             salaActual = 0;
@@ -25,6 +25,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 7;
             ataque = 8650;
             defensa = 3700;
+        }
+        public override void dibuja()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("$");
         }
         public void habla() { }
         public void bienvenida() { }

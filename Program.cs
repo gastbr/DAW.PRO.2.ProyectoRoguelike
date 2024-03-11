@@ -5,11 +5,14 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Partida.nuevaPartida("   elver  ", Entidad.Profesion.Guerrero);
+        Partida.nuevaPartida("    SAIDUHYAhbashbkauUAYGDU  ", Entidad.Profesion.Guerrero);
         while (true)
         {
-            HUD.dibuja();
-            Mapa.getSala(0).dibuja();
+            Mapa.getSala(0).dibujaSala();
+            Interfaz.dibujaHUD();
+            Interfaz.dibujaInfoAbajo();
+            Interfaz.dibujaInfoArriba();
+            Interfaz.dibujaEntidades();
         }
     }
 }

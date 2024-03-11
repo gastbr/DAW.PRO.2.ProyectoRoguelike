@@ -15,8 +15,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             tecla = Console.ReadKey().Key;
             return tecla;
         }
-        static public void abandonaPartida() {}
-        public static void abreInventario(Entidad jugador) { }
-        static public void mueve(Entidad jugador) { }
+        static public void abandonaPartida() { }
+        public static void abreInventario() { }
+        static public void mueve()
+        {
+            detectaTecla();
+            Partida.protagonista.getX();
+        }
     }
 }

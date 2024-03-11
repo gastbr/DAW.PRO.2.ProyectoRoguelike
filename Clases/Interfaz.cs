@@ -6,21 +6,15 @@ using System.Threading.Tasks;
 
 namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
-    internal static class HUD
+    internal static class Interfaz
     {
-        static string infoArriba = "MISIÓN: Encuentra el mono de Jade antes de que cambie la fase de la luna o te crecerán pelos dentro del ombligo.";
-        static string infoAbajo = "MANOLITO, EL DE LA TIENDA: \"Como me toques una sola poti te reviento la puta cabeza, cara de orco malnacido.\"";
-        public static void dibuja()
+        static string infoArriba = "infoarriba";
+        static string infoAbajo = "infoabajo";
+        public static void dibujaHUD()
         {
             Console.CursorVisible = false;
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine(infoArriba);
-            Console.SetCursorPosition(0, 28);
-            Console.WriteLine(infoAbajo);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.SetCursorPosition(0, 1);
-            Console.WriteLine();
+            Console.SetCursorPosition(0, 2);
             Console.WriteLine(Partida.protagonista.getNombre() + " (" + Partida.protagonista.getProfesion() + ")");
             Console.WriteLine();
             Console.WriteLine();
@@ -35,7 +29,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             }
             Console.WriteLine("ORO:\t\t" + Partida.protagonista.getOro().ToString().PadLeft(3));
             Console.WriteLine("NIVEL:\t\t" + Partida.protagonista.getNivel().ToString().PadLeft(3));
-            Console.WriteLine("Exp:\t\t" + Partida.protagonista.getExperiencia().ToString().PadLeft(3));
+            Console.WriteLine("EXP:\t\t" + Partida.protagonista.getExperiencia().ToString().PadLeft(3));
             Console.WriteLine();
             Console.WriteLine("ATQ:\t\t" + Partida.protagonista.getAtaque().ToString().PadLeft(3));
             Console.WriteLine("DEF:\t\t" + Partida.protagonista.getDefensa().ToString().PadLeft(3));
@@ -60,9 +54,33 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.WriteLine("Enter:\t" + "INVENTARIO".PadLeft(11));
             Console.WriteLine("Esc:\t" + "OPCIONES".PadLeft(11));
         }
+        public static void dibujaEntidades()
+        {
+            Partida.protagonista.dibuja();
+        }
         static public void setInfoArriba(string info) { infoArriba = info; }
         static public string getInfoArriba() { return infoArriba; }
+        static public void dibujaInfoAbajo()
+        {
+            Console.SetCursorPosition(0, 28);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            for (int i = 0; i < infoAbajo.Length; i++)
+            {
+                Console.Write(infoAbajo[i]);
+                Thread.Sleep(20);
+            }
+        }
         static public void setInfoAbajo(string info) { infoAbajo = info; }
         static public string getInfoAbajo() { return infoAbajo; }
+        static public void dibujaInfoArriba()
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            for (int i = 0; i < infoArriba.Length; i++)
+            {
+                Console.Write(infoArriba[i]);
+                Thread.Sleep(20);
+            }
+        }
     }
 }

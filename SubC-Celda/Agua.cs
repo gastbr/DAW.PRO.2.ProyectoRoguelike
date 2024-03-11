@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAW.PRO._2.ProyectoRoguelike.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,15 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Agua : Clases.Celda
     {
-        public override void dibuja() { }
+        public override void dibuja()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("~");
+        }
+        public void personajeMojado()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("a");
+        }
     }
 }

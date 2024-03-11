@@ -8,6 +8,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Salida : Clases.Celda
     {
-        public override void dibuja() { }
+        public override void dibuja()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("¤");
+        }
     }
 }

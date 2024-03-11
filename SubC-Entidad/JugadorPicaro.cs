@@ -27,7 +27,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 2;
             defensa = 0;
         }
-
+        public override void dibuja()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("a");
+        }
         public void atacaSigilo()
         {
             throw new NotImplementedException();

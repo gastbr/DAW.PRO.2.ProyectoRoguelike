@@ -8,6 +8,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
     internal class Suelo : Clases.Celda
     {
-        public override void dibuja() { }
+        public override void dibuja()
+        {
+            Console.Write(" ");
+        }
     }
 }
