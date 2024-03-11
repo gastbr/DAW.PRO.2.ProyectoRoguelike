@@ -11,10 +11,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         int ancho;
         int alto;
         int terrenos;
-        List<Objeto> objetos;
+        Tienda tienda;
         List<Entidad> enemigos;
         List<PNJ> pnjs;
-        Tienda tienda;
+        List<Objeto> objetos;
 
         Celda[,] celdas;
         public Sala(int nivel)
@@ -36,23 +36,39 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             int rx;
             int ry;
+
+            Partida.protagonista.spawn(ancho / 2, alto / 2);
+
+            // Spawn Tienda
             do
             {
                 rx = rng.Next(ancho);
                 ry = rng.Next(alto);
-                if (celdas[rx, ry] is Suelo)
+                if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
                 {
                     tienda.spawn(rx, ry);
                 }
-            } while (!(celdas[rx, ry] is Suelo));
+            } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
+            celdas[rx, ry].ocupada = true;
 
-            // MOVER TODO ESTO A GENERAENTIDADES(), CON EL METODO SPAWN() DE ENTIDAD.
-            // VALORAR CREAR METODOS SEPARADOS PARA TIENDA Y NPCS.
-            // AÑADIR SPAWNS A GENERAENTIDADES()
+            // Spawn Enemigos
+            for (int i = 0; i < enemigos.Count; i++)
+            {
+                do
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
+                    {
+                        enemigos[i].spawn(rx, ry);
+                    }
+                } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
+                celdas[rx, ry].ocupada = true;
+            }
+            // pendiente spawn pnj y objetos
         }
         void generaEntidades(int enemigos, int objetos, int terrenos)
         {
-            Partida.protagonista.spawn(ancho / 2, alto / 2);
             // La tienda solo aparece una vez cada tres niveles
             if (nivel % 3 == 0)
             {

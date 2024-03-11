@@ -11,6 +11,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public string nombre;
         public int x;
         public int y;
+        public bool spawneado;
         public int salaActual;
         public enum Profesion { Guerrero, Mago, Picaro, PNJ, Tienda };
         public Profesion profesion;
@@ -43,6 +44,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             setX(x);
             setY(y);
             dibuja();
+            spawneado = true;
         }
         public string getNombre() { return nombre; }
         public void setNombre(string nombre) { this.nombre = nombre; }
