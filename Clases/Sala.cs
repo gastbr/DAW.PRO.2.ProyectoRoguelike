@@ -42,11 +42,13 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 ry = rng.Next(alto);
                 if (celdas[rx, ry] is Suelo)
                 {
-                    tienda.setX(rx);
-                    tienda.setY(ry);
-                    tienda.dibuja();
+                    tienda.spawn(rx, ry);
                 }
             } while (!(celdas[rx, ry] is Suelo));
+
+            // MOVER TODO ESTO A GENERAENTIDADES(), CON EL METODO SPAWN() DE ENTIDAD.
+            // VALORAR CREAR METODOS SEPARADOS PARA TIENDA Y NPCS.
+            // AÑADIR SPAWNS A GENERAENTIDADES()
         }
         void generaEntidades(int enemigos, int objetos, int terrenos)
         {

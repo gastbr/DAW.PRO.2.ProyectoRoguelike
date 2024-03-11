@@ -42,6 +42,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             setX(x);
             setY(y);
+            dibuja();
         }
         public string getNombre() { return nombre; }
         public void setNombre(string nombre) { this.nombre = nombre; }
