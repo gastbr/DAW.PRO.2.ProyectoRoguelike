@@ -23,14 +23,15 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             rng.Next(30);
             this.nivel = nivel;
             // El ancho y alto del mapa son fijos, para ajustarse a la pantalla.
-            ancho = 100;
+            ancho = 96;
             alto = 27;
             celdas = new Celda[ancho, alto];
-            // El tamaño (suelo) de la sala es aleatorio y varía entre 300 y 1500 celdas suelo.
-            generaSala(rng.Next(300, 1500));
+            // El tamaño (suelo) de la sala es aleatorio y varía según el tamaño de la sala incluyendo los muros (alto*ancho).
+            generaSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
             // La cantidad de enemigos y de objetos aumenta proporcionalmente con el nivel según el ratio (ajustable) que se especifica por parámetros:
             terrenos = nivel * 4;
             generaEntidades(nivel * 1, nivel * 1, terrenos);
+            dibujaEntidades();
         }
         public void dibujaEntidades()
         {
@@ -51,30 +52,33 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
             celdas[rx, ry].ocupada = true;
 
-            // Spawn Enemigos
-            for (int i = 0; i < enemigos.Count; i++)
-            {
-                do
-                {
-                    rx = rng.Next(ancho);
-                    ry = rng.Next(alto);
-                    if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
-                    {
-                        enemigos[i].spawn(rx, ry);
-                    }
-                } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
-                celdas[rx, ry].ocupada = true;
-            }
-            // pendiente spawn pnj y objetos
+            //// Spawn Enemigos
+            //if (enemigos.Any())
+            //{
+            //    for (int i = 0; i < enemigos.Count; i++)
+            //    {
+            //        do
+            //        {
+            //            rx = rng.Next(ancho);
+            //            ry = rng.Next(alto);
+            //            if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
+            //            {
+            //                enemigos[i].spawn(rx, ry);
+            //            }
+            //        } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
+            //        celdas[rx, ry].ocupada = true;
+            //    }
+            //}
+            //// pendiente spawn pnj y objetos
         }
-        void generaEntidades(int enemigos, int objetos, int terrenos)
+        void generaEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
         {
             // La tienda solo aparece una vez cada tres niveles
             if (nivel % 3 == 0)
             {
                 tienda = new Tienda();
             }
-            for (int i = 0; i < enemigos; i++)
+            for (int i = 0; i < cantEnemigos; i++)
             {
                 int r = rng.Next(3);
                 switch (r)
@@ -84,13 +88,13 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     case 2: this.enemigos.Add(new EnemigoPicaro()); break;
                 }
             }
-            for (int i = 0; i < objetos; i++)
+            for (int i = 0; i < cantObjetos; i++)
             {
-                barajaObjetos(objetos);
+                barajaObjetos(cantObjetos);
             }
-            for (int i = 0; i < terrenos; i++)
+            for (int i = 0; i < cantTerrenos; i++)
             {
-                barajaTerrenos(terrenos);
+                barajaTerrenos(cantTerrenos);
             }
         }
         void barajaObjetos(int objetos)
@@ -130,7 +134,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public void dibujaSala()
         {
-            int posX = 20;
+            int posX = 0;
             int posY = 1;
             for (int i = 0; i < alto; i++)
             {

@@ -43,7 +43,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             setX(x);
             setY(y);
-            dibuja();
             spawneado = true;
         }
         public string getNombre() { return nombre; }

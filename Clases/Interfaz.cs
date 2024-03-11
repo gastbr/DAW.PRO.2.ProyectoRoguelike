@@ -10,29 +10,35 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     {
         static string infoArriba = "infoarriba";
         static string infoAbajo = "infoabajo";
+        static int posX = 97;
+        static int posY = 1;
         public static void dibujaHUD()
         {
             Console.CursorVisible = false;
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.SetCursorPosition(0, 2);
-            Console.WriteLine(Partida.protagonista.getNombre() + " (" + Partida.protagonista.getProfesion() + ")");
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.SetCursorPosition(posX, posY);
+            Console.Write(Partida.protagonista.getNombre() + " (" + Partida.protagonista.getProfesion() + ")");
+            Console.SetCursorPosition(posX, posY + 2);
             Console.ForegroundColor = ConsoleColor.Gray;
             if (Partida.protagonista.getSalaActual() == 0)
             {
-                Console.WriteLine("PISO ACTUAL:\t" + "PB".ToString().PadLeft(3));
+                Console.Write("PISO ACTUAL:\t" + "PB".ToString().PadLeft(3));
             }
             else
             {
-                Console.WriteLine("PISO ACTUAL:\t" + Partida.protagonista.getSalaActual().ToString().PadLeft(3));
+                Console.Write("PISO ACTUAL:\t" + Partida.protagonista.getSalaActual().ToString().PadLeft(3));
             }
-            Console.WriteLine("ORO:\t\t" + Partida.protagonista.getOro().ToString().PadLeft(3));
-            Console.WriteLine("NIVEL:\t\t" + Partida.protagonista.getNivel().ToString().PadLeft(3));
-            Console.WriteLine("EXP:\t\t" + Partida.protagonista.getExperiencia().ToString().PadLeft(3));
-            Console.WriteLine();
-            Console.WriteLine("ATQ:\t\t" + Partida.protagonista.getAtaque().ToString().PadLeft(3));
-            Console.WriteLine("DEF:\t\t" + Partida.protagonista.getDefensa().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 3);
+            Console.Write("ORO:\t\t" + Partida.protagonista.getOro().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 4);
+            Console.Write("NIVEL:\t\t" + Partida.protagonista.getNivel().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 5);
+            Console.Write("EXP:\t\t" + Partida.protagonista.getExperiencia().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 7);
+            Console.Write("ATQ:\t\t" + Partida.protagonista.getAtaque().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 8);
+            Console.Write("DEF:\t\t" + Partida.protagonista.getDefensa().ToString().PadLeft(3));
+            Console.SetCursorPosition(posX, posY + 9);
             Console.Write("HP:\t ");
             if (Partida.protagonista.getVidaActual() < Partida.protagonista.getVidaMax() * 0.3)
             {
@@ -45,14 +51,18 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(Partida.protagonista.getVidaActual().ToString().PadLeft(3));
             }
-            Console.WriteLine("  /  " + Partida.protagonista.getVidaMax());
-            Console.SetCursorPosition(0, 22);
+            Console.Write("  /  " + Partida.protagonista.getVidaMax());
+            Console.SetCursorPosition(posX, posY + 22);
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("CONTROLES:");
-            Console.WriteLine("Flechas:" + "MOVER".PadLeft(11));
-            Console.WriteLine("Shift:\t" + "INTERACTUAR".PadLeft(11));
-            Console.WriteLine("Enter:\t" + "INVENTARIO".PadLeft(11));
-            Console.WriteLine("Esc:\t" + "OPCIONES".PadLeft(11));
+            Console.Write("CONTROLES:");
+            Console.SetCursorPosition(posX, posY + 23);
+            Console.Write("←↑→↓:".PadRight(9) + "MOVER".PadLeft(9));
+            Console.SetCursorPosition(posX, posY + 24);
+            Console.Write("Shift:".PadRight(9) + "EXAMINAR".PadLeft(9));
+            Console.SetCursorPosition(posX, posY + 25);
+            Console.Write("Enter:".PadRight(9) + "OBJETOS".PadLeft(9));
+            Console.SetCursorPosition(posX, posY + 26);
+            Console.Write("Esc:".PadRight(9) + "OPCIONES".PadLeft(9));
         }
         public static void dibujaEntidades()
         {

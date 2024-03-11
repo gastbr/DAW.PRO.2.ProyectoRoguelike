@@ -10,17 +10,26 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     internal static class Controles
     {
         static ConsoleKey tecla;
-        static public ConsoleKey detectaTecla()
+        static public void detectaTecla()
         {
             tecla = Console.ReadKey().Key;
-            return tecla;
+            mueve(tecla);
         }
         static public void abandonaPartida() { }
         public static void abreInventario() { }
-        static public void mueve()
+        static public void mueve(ConsoleKey tecla)
         {
-            detectaTecla();
-            Partida.protagonista.getX();
+            switch (tecla)
+            {
+                case ConsoleKey.DownArrow:
+                    Partida.protagonista.setY(Partida.protagonista.getY() + 1); break;
+                case ConsoleKey.UpArrow:
+                    Partida.protagonista.setY(Partida.protagonista.getY() - 1); break;
+                case ConsoleKey.LeftArrow:
+                    Partida.protagonista.setX(Partida.protagonista.getX() - 1); break;
+                case ConsoleKey.RightArrow:
+                    Partida.protagonista.setX(Partida.protagonista.getX() + 1); break;
+            }
         }
     }
 }

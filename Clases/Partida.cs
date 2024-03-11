@@ -29,7 +29,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static public void nuevaPartida(string nombre, Entidad.Profesion profesion)
         {
-            Mapa.addSala();
             switch (profesion)
             {
                 case Entidad.Profesion.Guerrero: protagonista = new JugadorGuerrero(); break;
@@ -41,6 +40,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             nombre = nombre.Substring(0, 9);
             nombre = String.Concat(char.ToUpper(nombre[0]) + nombre.Substring(1).ToLower());
             protagonista.setNombre(nombre);
+            Mapa.addSala();
         }
 
     }
