@@ -10,7 +10,7 @@ internal class Program
         while (true)
         {
             Interfaz.dibujaHUD();
-            Interfaz.dibujaEntidades();            
+            Interfaz.dibujaEntidades();
             Controles.detectaTecla();
         }
     }

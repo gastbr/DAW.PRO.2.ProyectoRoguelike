@@ -12,7 +12,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static ConsoleKey tecla;
         static public void detectaTecla()
         {
-            tecla = Console.ReadKey().Key;
+            tecla = Console.ReadKey(true).Key;
             mueve(tecla);
         }
         static public void abandonaPartida() { }
@@ -22,15 +22,19 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             switch (tecla)
             {
                 case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
                     Partida.protagonista.camina(Entidad.Direccion.abajo);
                     break;
                 case ConsoleKey.UpArrow:
+                case ConsoleKey.W:
                     Partida.protagonista.camina(Entidad.Direccion.arriba);
                     break;
                 case ConsoleKey.LeftArrow:
+                case ConsoleKey.A:
                     Partida.protagonista.camina(Entidad.Direccion.izquierda);
                     break;
                 case ConsoleKey.RightArrow:
+                case ConsoleKey.D:
                     Partida.protagonista.camina(Entidad.Direccion.derecha);
                     break;
             }

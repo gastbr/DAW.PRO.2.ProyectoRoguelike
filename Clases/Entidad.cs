@@ -35,15 +35,22 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             this.direccion = direccion;
             preX = x;
             preY = y;
-            Mapa.getSala(salaActual).getCelda(x, y).ocupada = false;
+            int nuevaX = x;
+            int nuevaY = y;
             switch (direccion)
             {
-                case Direccion.arriba: y--; break;
-                case Direccion.abajo: y++; break;
-                case Direccion.izquierda: x--; break;
-                case Direccion.derecha: x++; break;
+                case Direccion.arriba: nuevaY--; break;
+                case Direccion.abajo: nuevaY++; break;
+                case Direccion.izquierda: nuevaX--; break;
+                case Direccion.derecha: nuevaX++; break;
             }
-            Mapa.getSala(salaActual).getCelda(x, y).ocupada = true;
+            if (Mapa.getSala(salaActual).getCelda(nuevaX, nuevaY).ocupada == false)
+            {
+                x = nuevaX;
+                y = nuevaY;
+                Mapa.getSala(salaActual).getCelda(preX, preY).ocupada = false;
+                Mapa.getSala(salaActual).getCelda(x, y).ocupada = true;
+            }
 
         }
         public void spawn(int x, int y)

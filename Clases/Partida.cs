@@ -42,6 +42,5 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             protagonista.nombre = nombre;
             Mapa.addSala();
         }
-
     }
 }

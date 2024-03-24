@@ -8,10 +8,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Interfaz
     {
-        static string infoArriba = "infoarriba";
-        static string infoAbajo = "infoabajo";
+        static string info = "infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo infoabajo ";
         static int posX = 97;
-        static int posY = 1;
+        static int posY = 0;
         public static void dibujaHUD()
         {
             Console.CursorVisible = false;
@@ -62,7 +61,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.SetCursorPosition(posX, posY + 22);
             Console.Write("CONTROLES:");
             Console.SetCursorPosition(posX, posY + 23);
-            Console.Write("←↑→↓:".PadRight(9) + "MOVER".PadLeft(9));
+            Console.Write("Flechas:".PadRight(9) + "MOVER".PadLeft(9));
             Console.SetCursorPosition(posX, posY + 24);
             Console.Write("Shift:".PadRight(9) + "EXAMINAR".PadLeft(9));
             Console.SetCursorPosition(posX, posY + 25);
@@ -75,29 +74,17 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.preX, Partida.protagonista.preY).dibuja();
             Partida.protagonista.dibuja();
         }
-        static public void setInfoArriba(string info) { infoArriba = info; }
-        static public string getInfoArriba() { return infoArriba; }
-        static public void dibujaInfoAbajo()
+        static public void dibujaInfo()
         {
-            Console.SetCursorPosition(0, 28);
+            Console.SetCursorPosition(0, 27);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            for (int i = 0; i < infoAbajo.Length; i++)
+            for (int i = 0; i < info.Length; i++)
             {
-                Console.Write(infoAbajo[i]);
+                Console.Write(info[i]);
                 Thread.Sleep(20);
             }
         }
-        static public void setInfoAbajo(string info) { infoAbajo = info; }
-        static public string getInfoAbajo() { return infoAbajo; }
-        static public void dibujaInfoArriba()
-        {
-            Console.SetCursorPosition(0, 0);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            for (int i = 0; i < infoArriba.Length; i++)
-            {
-                Console.Write(infoArriba[i]);
-                Thread.Sleep(20);
-            }
-        }
+        static public void setInfo(string info) { Interfaz.info = info; }
+        static public string getInfo() { return info; }
     }
 }

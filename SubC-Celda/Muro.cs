@@ -11,6 +11,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
     {
         public Muro(int x, int y) : base(x, y)
         {
+            ocupada = true;
         }
 
         public override void dibuja() {
