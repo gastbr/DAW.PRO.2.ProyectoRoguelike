@@ -22,13 +22,17 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             switch (tecla)
             {
                 case ConsoleKey.DownArrow:
-                    Partida.protagonista.setY(Partida.protagonista.getY() + 1); break;
+                    Partida.protagonista.camina(Entidad.Direccion.abajo);
+                    break;
                 case ConsoleKey.UpArrow:
-                    Partida.protagonista.setY(Partida.protagonista.getY() - 1); break;
+                    Partida.protagonista.camina(Entidad.Direccion.arriba);
+                    break;
                 case ConsoleKey.LeftArrow:
-                    Partida.protagonista.setX(Partida.protagonista.getX() - 1); break;
+                    Partida.protagonista.camina(Entidad.Direccion.izquierda);
+                    break;
                 case ConsoleKey.RightArrow:
-                    Partida.protagonista.setX(Partida.protagonista.getX() + 1); break;
+                    Partida.protagonista.camina(Entidad.Direccion.derecha);
+                    break;
             }
         }
     }

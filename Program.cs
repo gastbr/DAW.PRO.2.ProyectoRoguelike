@@ -5,12 +5,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Partida.nuevaPartida("        wqerasdfqweras      ", Entidad.Profesion.Guerrero);
+        Partida.nuevaPartida("             IgUYUgUTuudGauGUYuGYKUYTUGTtgu        ", Entidad.Profesion.Guerrero);
+        Mapa.getSala(0).dibujaSala();
         while (true)
         {
-            Mapa.getSala(0).dibujaSala();
             Interfaz.dibujaHUD();
-            Partida.protagonista.dibuja(); // Interfaz.dibujaEntidades();            
+            Interfaz.dibujaEntidades();            
             Controles.detectaTecla();
         }
     }

@@ -15,6 +15,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nombre = "";
             x = 0;
             y = 0;
+            preX = x;
+            preY = y;
             salaActual = 0;
             profesion = Profesion.Guerrero;
             direccion = Direccion.derecha;

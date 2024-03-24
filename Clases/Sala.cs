@@ -135,7 +135,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public void dibujaSala()
         {
             int posX = 0;
-            int posY = 1;
+            int posY = 0;
             for (int i = 0; i < alto; i++)
             {
                 Console.SetCursorPosition(posX, posY + i);
@@ -151,7 +151,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             {
                 for (int j = 0; j < ancho; j++)
                 {
-                    celdas[j, i] = new Muro();
+                    celdas[j, i] = new Muro(j,i);
                 }
             }
             tiraMuro(tamanio);
@@ -173,7 +173,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 
                 if (celdas[x, y] is Muro)
                 {
-                    celdas[x, y] = new Suelo();
+                    celdas[x, y] = new Suelo(x, y);
                     tirado++;
                 }
 
@@ -206,21 +206,21 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                                 case int k when k >= 0 && k < 15:
                                     if (r2 <= (30 * nivel))
                                     {
-                                        celdas[j, i] = new Lava();
+                                        celdas[j, i] = new Lava(j, i);
                                         this.terrenos++;
                                     }
                                     break;
                                 case int k when k >= 15 && k < 50:
                                     if (r2 <= (70 * nivel))
                                     {
-                                        celdas[j, i] = new Agua();
+                                        celdas[j, i] = new Agua(j, i);
                                         this.terrenos++;
                                     }
                                     break;
                                 case int k when k >= 50 && k < 55:
                                     if (r2 <= (30 * nivel))
                                     {
-                                        celdas[j, i] = new Trampa();
+                                        celdas[j, i] = new Trampa(j, i);
                                     }
                                     break;
                                 default:
@@ -230,6 +230,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     }
                 }
             }
+        }
+        public Celda getCelda(int x, int y)
+        {
+            return celdas[x, y];
+        }
+        public void setCelda(int x, int y, Celda nuevaCelda)
+        {
+            celdas[x, y] = nuevaCelda;
         }
     }
 }
