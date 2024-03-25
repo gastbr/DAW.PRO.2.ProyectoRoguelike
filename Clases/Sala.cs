@@ -1,6 +1,7 @@
 ﻿using DAW.PRO._2.ProyectoRoguelike.SubC_Celda;
 using DAW.PRO._2.ProyectoRoguelike.SubC_Entidad;
 using DAW.PRO._2.ProyectoRoguelike.SubC_Objeto;
+using System.Xml.Serialization;
 
 namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
@@ -20,83 +21,67 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public Sala(int nivel)
         {
             rng = new Random();
-            rng.Next(30);
+            for (int i = 0; i < 30; i++)
+            {
+                rng.Next();
+            }
             this.nivel = nivel;
-            // El ancho y alto del mapa son fijos, para ajustarse a la pantalla.
             ancho = 96;
             alto = 27;
+            terrenos = nivel * 3;
+            enemigos = new List<Entidad>();
+            pnjs = new List<PNJ>();
+            objetos = new List<Objeto>();
             celdas = new Celda[ancho, alto];
-            // El tamaño (suelo) de la sala es aleatorio y varía según el tamaño de la sala incluyendo los muros (alto*ancho).
             generaSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
-            // La cantidad de enemigos y de objetos aumenta proporcionalmente con el nivel según el ratio (ajustable) que se especifica por parámetros:
-            terrenos = nivel * 4;
-            spawnEntidades(nivel * 1, nivel * 1, terrenos);
-            spawnEntidades();
+            spawnEntidades((int)Math.Truncate(nivel * 1.4), (nivel + 1) % 2, (int)Math.Truncate(nivel * 1.4));
         }
-        public void spawnEntidades()
+
+        // Objetos y entidades
+        void spawnEntidades(int enemigos, int pnjs, int objetos)
         {
             int rx;
             int ry;
 
+            // Protagonista
             Partida.protagonista.spawn(ancho / 2, alto / 2);
 
-            // Spawn Tienda
-            do
+            // Enemigos
+            for (int i = 0; i < enemigos; i++)
             {
-                rx = rng.Next(ancho);
-                ry = rng.Next(alto);
-                if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
+                switch (rng.Next(3))
                 {
-                    tienda.spawn(rx, ry);
+                    case 0:
+                        this.enemigos[i] = new EnemigoGuerrero();
+                        break;
+                    case 1:
+                        this.enemigos[i] = new EnemigoMago();
+                        break;
+                    case 2:
+                        this.enemigos[i] = new EnemigoPicaro();
+                        break;
                 }
-            } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
-            celdas[rx, ry].ocupada = true;
+            }
 
-            //// Spawn Enemigos
-            //if (enemigos.Any())
-            //{
-            //    for (int i = 0; i < enemigos.Count; i++)
-            //    {
-            //        do
-            //        {
-            //            rx = rng.Next(ancho);
-            //            ry = rng.Next(alto);
-            //            if (celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false)
-            //            {
-            //                enemigos[i].spawn(rx, ry);
-            //            }
-            //        } while (!(celdas[rx, ry] is Suelo && celdas[rx, ry].ocupada == false));
-            //        celdas[rx, ry].ocupada = true;
-            //    }
-            //}
-            //// pendiente spawn pnj y objetos
-        } 
-        void spawnEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
-        {
-            // La tienda solo aparece una vez cada tres niveles
-            if (nivel % 3 == 0)
+            if (this.enemigos.Any())
             {
-                tienda = new Tienda();
-            }
-            for (int i = 0; i < cantEnemigos; i++)
-            {
-                int r = rng.Next(3);
-                switch (r)
+                for (int i = 0; i < this.enemigos.Count(); i++)
                 {
-                    case 0: this.enemigos.Add(new EnemigoGuerrero()); break;
-                    case 1: this.enemigos.Add(new EnemigoMago()); break;
-                    case 2: this.enemigos.Add(new EnemigoPicaro()); break;
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx,ry] is Suelo)
+                    {
+                        this.enemigos[i].spawn(rx, ry);
+                    }
                 }
             }
-            for (int i = 0; i < cantObjetos; i++)
-            {
-                barajaObjetos(cantObjetos);
-            }
-            for (int i = 0; i < cantTerrenos; i++)
-            {
-                barajaTerrenos(cantTerrenos);
-            }
+
+            // PNJ
+            // Objetos
+            // Tienda
         }
+
+        // Mapa
         public void dibujaSala()
         {
             int posX = 0;
@@ -116,7 +101,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             {
                 for (int j = 0; j < ancho; j++)
                 {
-                    celdas[j, i] = new Muro(j,i);
+                    celdas[j, i] = new Muro(j, i);
                 }
             }
             tiraMuro(tamanio);
@@ -153,83 +138,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 }
 
             } while (tirado < tamanio);
-        }
-        void barajaObjetos(int objetos)
-        {
-            while (this.objetos.Count < objetos)
-            {
-                int r1 = rng.Next(100);
-                int r2 = rng.Next(100);
-                switch (r1)
-                {
-                    case int i when i >= 0 && i < 7: // 7% droprate
-                        if (r2 < (7 * nivel))
-                        {
-                            this.objetos.Add(new SantoGrial());
-                        }
-                        break;
-                    case int i when i >= 7 && i < 22: // 22-7 = 15% droprate
-                        if (r2 < (15 * nivel))
-                        {
-                            this.objetos.Add(new Pocion());
-                        }
-                        break;
-                    case int i when i >= 22 && i < 52: // 52-22 = 30% droprate
-                        if (r2 < (30 * nivel))
-                        {
-                            this.objetos.Add(new Manzana());
-                        }
-                        break;
-                    case int i when i >= 52 && i < 100: // 100-52 = 48% droprate
-                        if (r2 < (48 * nivel))
-                        {
-                            this.objetos.Add(new Pan());
-                        }
-                        break;
-                }
-            }
-        }
-        void barajaTerrenos(int terrenos)
-        {
-            int r1 = rng.Next(100);
-            int r2 = rng.Next(100);
-            while (this.terrenos < terrenos)
-            {
-                for (int i = 0; i < ancho; i++)
-                {
-                    for (int j = 0; j < alto; j++)
-                    {
-                        if (celdas[j, i] is Suelo)
-                        {
-                            switch (r1)
-                            {
-                                case int k when k >= 0 && k < 15:
-                                    if (r2 <= (7 * nivel))
-                                    {
-                                        celdas[j, i] = new Lava(j, i);
-                                        this.terrenos++;
-                                    }
-                                    break;
-                                case int k when k >= 15 && k < 50:
-                                    if (r2 <= (20 * nivel))
-                                    {
-                                        celdas[j, i] = new Agua(j, i);
-                                        this.terrenos++;
-                                    }
-                                    break;
-                                case int k when k >= 50 && k < 55:
-                                    if (r2 <= (7 * nivel))
-                                    {
-                                        celdas[j, i] = new Trampa(j, i);
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-                }
-            }
         }
         public Celda getCelda(int x, int y)
         {

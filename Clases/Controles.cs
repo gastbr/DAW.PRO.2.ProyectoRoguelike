@@ -14,10 +14,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             tecla = Console.ReadKey(true).Key;
             mueve(tecla);
+            interactua(tecla);
         }
-        static public void abandonaPartida() { }
-        public static void abreInventario() { }
-        static public void mueve(ConsoleKey tecla)
+        static void mueve(ConsoleKey tecla)
         {
             switch (tecla)
             {
@@ -39,5 +38,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     break;
             }
         }
+        static void interactua(ConsoleKey tecla)
+        {
+
+        }
+        static void abreInventario() { }
+        static void abandonaPartida() { }
     }
 }

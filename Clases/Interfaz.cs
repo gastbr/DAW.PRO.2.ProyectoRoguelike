@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -53,11 +54,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.Write("  /  " + Partida.protagonista.vidaMax);
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(posX, posY + 15);
-            Console.Write("Pos: " + $"{Partida.protagonista.x}".PadLeft(3)+" / "+$"{Partida.protagonista.y}".PadLeft(3));
+            Console.Write("Pos: " + $"{Partida.protagonista.x}".PadLeft(3) + " / " + $"{Partida.protagonista.y}".PadLeft(3));
             Console.SetCursorPosition(posX, posY + 16);
-            Console.Write("Pre :" + $"{Partida.protagonista.preX}".PadLeft(3)+" / "+$"{Partida.protagonista.preY}".PadLeft(3));
+            Console.Write("Pre :" + $"{Partida.protagonista.preX}".PadLeft(3) + " / " + $"{Partida.protagonista.preY}".PadLeft(3));
             Console.SetCursorPosition(posX, posY + 17);
-            Console.Write("Celda: " + $"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.')+1).PadLeft(7));
+            Console.Write("Celda: " + $"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(7));
             Console.SetCursorPosition(posX, posY + 22);
             Console.Write("CONTROLES:");
             Console.SetCursorPosition(posX, posY + 23);
@@ -73,8 +74,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             Mapa.dibujaEntidadMovil(Partida.protagonista);
         }
-        static public void dibujaInfo()
+        static public void dibujaInfo(string texto)
         {
+            info = texto.Substring(0,360);
             Console.SetCursorPosition(0, 27);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             for (int i = 0; i < info.Length; i++)
@@ -82,6 +84,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Console.Write(info[i]);
                 Thread.Sleep(20);
             }
+            Console.ReadLine();
+            for (int i = 0; i < info.Length; i++)
+            {
+                Console.Write(" ");
+            }
+            info = "";
         }
         static public void setInfo(string info) { Interfaz.info = info; }
         static public string getInfo() { return info; }

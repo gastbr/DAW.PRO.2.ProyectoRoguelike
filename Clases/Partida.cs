@@ -35,7 +35,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 case Entidad.Profesion.Mago: protagonista = new JugadorMago(); break;
                 case Entidad.Profesion.Picaro: protagonista = new JugadorPicaro(); break;
             }
-            // Recorta espacios (trim), limita a los primeros 9 caracteres y pone la primera letra mayúscula.
             nombre = nombre.Trim();
             nombre = nombre.Substring(0, 9);
             nombre = String.Concat(char.ToUpper(nombre[0]) + nombre.Substring(1).ToLower());
