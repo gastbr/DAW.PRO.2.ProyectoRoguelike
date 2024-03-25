@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
 {
-    internal class PNJ : Entidad
+    internal class Mision : Entidad
     {
         string frase;
-        public PNJ()
+        public Mision()
         {
-            nombre = "";
+            nombre = "Hombre misterioso con la bragueta bajada";
             x = 0;
             y = 0;
             preX = x;
@@ -34,13 +34,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Ï");
+            Console.Write("!");
         }
-        public void habla()
+        void habla()
         {
-
+            Interfaz.dibujaInfo(frase);
         }
-        public void setFrase(string frase) { this.frase = frase; }
-        public string getFrase() { return this.frase; }
     }
 }

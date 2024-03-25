@@ -7,15 +7,21 @@ using System.Threading.Tasks;
 
 namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
 {
-    internal class Agua : Clases.Celda
+    internal class Agua : Celda
     {
-        public override void dibuja()
+        public Agua(int x, int y) : base(x, y)
         {
+        }
+
+        public override void Dibuja()
+        {
+            Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("~");
         }
         public void personajeMojado()
         {
+            Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("a");
         }

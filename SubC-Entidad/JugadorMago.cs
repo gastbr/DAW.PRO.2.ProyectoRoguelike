@@ -16,6 +16,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nombre = "";
             x = 0;
             y = 0;
+            preX = x;
+            preY = y;
             salaActual = 0;
             direccion = Direccion.derecha;
             profesion = Profesion.Mago;
@@ -27,36 +29,35 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 3;
             defensa = 0;
         }
-        public override void dibuja()
-        {
-            Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("a");
-        }
+
         public void atacaDistancia()
         {
             throw new NotImplementedException();
         }
+
+        public void compruebaEntorno()
+        {
+            throw new NotImplementedException();
+        }
+
         public void creaPortal()
         {
             throw new NotImplementedException();
         }
+
         public void cura()
         {
             throw new NotImplementedException();
         }
 
+        public override void Dibuja()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("a");
+        }
+
         public void entra(Celda puerta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void habla(string[] texto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void habla(string texto)
         {
             throw new NotImplementedException();
         }

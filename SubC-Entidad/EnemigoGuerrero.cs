@@ -15,6 +15,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nombre = "";
             x = 0;
             y = 0;
+            preX = x;
+            preY = y;
             salaActual = 0;
             profesion = Profesion.Guerrero;
             direccion = Direccion.derecha;
@@ -26,7 +28,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 5;
             defensa = 0;
         }
-        public override void dibuja()
+        public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.DarkRed;

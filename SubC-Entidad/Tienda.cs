@@ -15,6 +15,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             nombre = "El tendero Miguelillo";
             x = 0;
             y = 0;
+            preX = x;
+            preY = y;
+            spawneado = false;
             salaActual = 0;
             direccion = Direccion.derecha;
             profesion = Profesion.Tienda;
@@ -26,7 +29,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 8650;
             defensa = 3700;
         }
-        public override void dibuja()
+        public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Green;

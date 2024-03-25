@@ -7,7 +7,7 @@ using DAW.PRO._2.ProyectoRoguelike.Clases;
 
 namespace DAW.PRO._2.ProyectoRoguelike.SubC_Objeto
 {
-    internal class SantoGrial : Objeto
+    internal class MonoDeJade : Objeto
     {
     }
 }

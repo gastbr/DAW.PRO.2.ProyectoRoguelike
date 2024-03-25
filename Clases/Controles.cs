@@ -1,35 +1,41 @@
-﻿using DAW.PRO._2.ProyectoRoguelike.SubC_Entidad;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAW.PRO._2.ProyectoRoguelike.Clases
+﻿namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Controles
     {
         static ConsoleKey tecla;
-        static public void detectaTecla()
+        static public void DetectaTecla()
         {
-            tecla = Console.ReadKey().Key;
-            mueve(tecla);
+            tecla = Console.ReadKey(true).Key;
+            Mueve(tecla);
+            Interactua(tecla);
         }
-        static public void abandonaPartida() { }
-        public static void abreInventario() { }
-        static public void mueve(ConsoleKey tecla)
+        static void Mueve(ConsoleKey tecla)
         {
             switch (tecla)
             {
                 case ConsoleKey.DownArrow:
-                    Partida.protagonista.setY(Partida.protagonista.getY() + 1); break;
+                case ConsoleKey.S:
+                    Partida.protagonista.camina(Entidad.Direccion.abajo);
+                    break;
                 case ConsoleKey.UpArrow:
-                    Partida.protagonista.setY(Partida.protagonista.getY() - 1); break;
+                case ConsoleKey.W:
+                    Partida.protagonista.camina(Entidad.Direccion.arriba);
+                    break;
                 case ConsoleKey.LeftArrow:
-                    Partida.protagonista.setX(Partida.protagonista.getX() - 1); break;
+                case ConsoleKey.A:
+                    Partida.protagonista.camina(Entidad.Direccion.izquierda);
+                    break;
                 case ConsoleKey.RightArrow:
-                    Partida.protagonista.setX(Partida.protagonista.getX() + 1); break;
+                case ConsoleKey.D:
+                    Partida.protagonista.camina(Entidad.Direccion.derecha);
+                    break;
             }
         }
+        static void Interactua(ConsoleKey tecla)
+        {
+
+        }
+        static void AbreInventario() { }
+        static void AbandonaPartida() { }
     }
 }
