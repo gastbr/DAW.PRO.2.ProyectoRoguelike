@@ -16,7 +16,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static public void addSala()
         {
-            salas.Add(new Sala(salas.Count()));
+            salas.Add(new Sala(salas.Count()+5));
         }
         static public Sala getSala(int index)
         {

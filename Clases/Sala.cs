@@ -34,17 +34,20 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             objetos = new List<Objeto>();
             celdas = new Celda[ancho, alto];
             generaSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
+            creaTerrenos((int)Math.Truncate(nivel * 2.3));
             spawnEntidades((int)Math.Truncate(nivel * 1.4), (nivel + 1) % 2, (int)Math.Truncate(nivel * 1.4));
         }
 
         // Objetos y entidades
         void spawnEntidades(int enemigos, int pnjs, int objetos)
         {
-            int rx;
-            int ry;
+            int rx = rng.Next(ancho);
+            int ry = rng.Next(alto);
 
             // Protagonista
+            //if (!celdas[rx, ry].ocupada && )
             Partida.protagonista.spawn(ancho / 2, alto / 2);
+
 
             // Enemigos
             for (int i = 0; i < enemigos; i++)
@@ -52,24 +55,24 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 switch (rng.Next(3))
                 {
                     case 0:
-                        this.enemigos[i] = new EnemigoGuerrero();
+                        this.enemigos.Add(new EnemigoGuerrero());
                         break;
                     case 1:
-                        this.enemigos[i] = new EnemigoMago();
+                        this.enemigos.Add(new EnemigoMago());
                         break;
                     case 2:
-                        this.enemigos[i] = new EnemigoPicaro();
+                        this.enemigos.Add(new EnemigoPicaro());
                         break;
                 }
             }
 
             if (this.enemigos.Any())
             {
-                for (int i = 0; i < this.enemigos.Count(); i++)
+                for (int i = 0; i < this.enemigos.Count; i++)
                 {
                     rx = rng.Next(ancho);
                     ry = rng.Next(alto);
-                    if (celdas[rx,ry] is Suelo)
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
                     {
                         this.enemigos[i].spawn(rx, ry);
                     }
@@ -79,6 +82,40 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // PNJ
             // Objetos
             // Tienda
+        } // COMPLETAR
+
+        // Terrenos
+        void creaTerrenos(int terrenos)
+        {
+            // En celdas aleatorias, si es suelo la cambia a:
+            // agua (60% prob)
+            // lava (30%)
+            // trampa (10%)
+            // Repite tanta cantidad de veces como terrenos se pidan
+            int rx;
+            int ry;
+
+            for (int i = 0; i < terrenos; i++)
+            {
+                rx = rng.Next(ancho);
+                ry = rng.Next(alto);
+
+                if (celdas[rx, ry] is Suelo)
+                {
+                    switch (rng.Next(10))
+                    {
+                        case 0:
+                            celdas[rx, ry] = new Trampa(rx, ry);
+                            break;
+                        case int n when n >= 1 && n <= 3:
+                            celdas[rx, ry] = new Lava(rx, ry);
+                            break;
+                        case int n when n > 3:
+                            celdas[rx, ry] = new Agua(rx, ry);
+                            break;
+                    }
+                }
+            }
         }
 
         // Mapa
@@ -138,6 +175,30 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 }
 
             } while (tirado < tamanio);
+        }
+        Entidad compruebaEntidad(int x, int y)
+        {
+            Entidad hallado = null;
+            for (int i = 0; i < enemigos.Count; i++)
+            {
+                if (celdas[x, y].ocupada)
+                {
+
+                    if (enemigos[i].x == x && enemigos[i].y == y)
+                    {
+                        hallado = enemigos[i];
+                    }
+                    else if (pnjs[i].x == x && pnjs[i].y == y)
+                    {
+                        hallado = pnjs[i];
+                    }
+                    else if (tienda.x == x && tienda.y == y)
+                    {
+                        hallado = tienda;
+                    }
+                }
+            }
+            return hallado;
         }
         public Celda getCelda(int x, int y)
         {
