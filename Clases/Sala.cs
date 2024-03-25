@@ -30,10 +30,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             generaSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
             // La cantidad de enemigos y de objetos aumenta proporcionalmente con el nivel según el ratio (ajustable) que se especifica por parámetros:
             terrenos = nivel * 4;
-            generaEntidades(nivel * 1, nivel * 1, terrenos);
-            dibujaEntidades();
+            spawnEntidades(nivel * 1, nivel * 1, terrenos);
+            spawnEntidades();
         }
-        public void dibujaEntidades()
+        public void spawnEntidades( )
         {
             int rx;
             int ry;
@@ -70,8 +70,65 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             //    }
             //}
             //// pendiente spawn pnj y objetos
+        } 
+        public void dibujaSala()
+        {
+            int posX = 0;
+            int posY = 0;
+            for (int i = 0; i < alto; i++)
+            {
+                Console.SetCursorPosition(posX, posY + i);
+                for (int j = 0; j < ancho; j++)
+                {
+                    celdas[j, i].dibuja();
+                }
+            }
         }
-        void generaEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
+        void generaSala(int tamanio)
+        {
+            for (int i = 0; i < alto; i++)
+            {
+                for (int j = 0; j < ancho; j++)
+                {
+                    celdas[j, i] = new Muro(j,i);
+                }
+            }
+            tiraMuro(tamanio);
+        }
+        void tiraMuro(int tamanio)
+        {
+            int direccion;
+            int tirado = 0;
+            int x = ancho / 2;
+            int y = alto / 2;
+
+            do
+            {
+                if (x >= (ancho - 1) || y >= (alto - 1) || x <= 0 || y <= 0)
+                {
+                    x = ancho / 2;
+                    y = alto / 2;
+                }
+
+                if (celdas[x, y] is Muro)
+                {
+                    celdas[x, y] = new Suelo(x, y);
+                    tirado++;
+                }
+
+                direccion = rng.Next(4);
+
+                switch (direccion)
+                {
+                    case 0: x++; break;
+                    case 1: x--; break;
+                    case 2: y++; break;
+                    case 3: y--; break;
+                }
+
+            } while (tirado < tamanio);
+        }
+        void spawnEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
         {
             // La tienda solo aparece una vez cada tres niveles
             if (nivel % 3 == 0)
@@ -131,63 +188,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                         break;
                 }
             }
-        }
-        public void dibujaSala()
-        {
-            int posX = 0;
-            int posY = 0;
-            for (int i = 0; i < alto; i++)
-            {
-                Console.SetCursorPosition(posX, posY + i);
-                for (int j = 0; j < ancho; j++)
-                {
-                    celdas[j, i].dibuja();
-                }
-            }
-        }
-        void generaSala(int tamanio)
-        {
-            for (int i = 0; i < alto; i++)
-            {
-                for (int j = 0; j < ancho; j++)
-                {
-                    celdas[j, i] = new Muro(j,i);
-                }
-            }
-            tiraMuro(tamanio);
-        }
-        void tiraMuro(int tamanio)
-        {
-            int direccion;
-            int tirado = 0;
-            int x = ancho / 2;
-            int y = alto / 2;
-
-            do
-            {
-                if (x >= (ancho - 1) || y >= (alto - 1) || x <= 0 || y <= 0)
-                {
-                    x = ancho / 2;
-                    y = alto / 2;
-                }
-
-                if (celdas[x, y] is Muro)
-                {
-                    celdas[x, y] = new Suelo(x, y);
-                    tirado++;
-                }
-
-                direccion = rng.Next(4);
-
-                switch (direccion)
-                {
-                    case 0: x++; break;
-                    case 1: x--; break;
-                    case 2: y++; break;
-                    case 3: y--; break;
-                }
-
-            } while (tirado < tamanio);
         }
         void barajaTerrenos(int terrenos)
         {

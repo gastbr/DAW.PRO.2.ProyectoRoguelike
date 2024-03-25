@@ -71,8 +71,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public static void dibujaEntidades()
         {
-            Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.preX, Partida.protagonista.preY).dibuja();
-            Partida.protagonista.dibuja();
+            Mapa.dibujaEntidadMovil(Partida.protagonista);
         }
         static public void dibujaInfo()
         {
