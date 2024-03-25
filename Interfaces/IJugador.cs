@@ -11,9 +11,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Interfaces
     {
         public void usaObjeto(Objeto objeto);
         public void recogeObjeto(Objeto objeto);
-        public void habla(string[] texto);
-        public void habla(string texto);
         public void entra(Celda puerta);
         public void interactua();
+        public void compruebaEntorno();
     }
 }

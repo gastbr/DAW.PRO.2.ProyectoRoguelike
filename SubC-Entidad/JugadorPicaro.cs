@@ -29,28 +29,25 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 2;
             defensa = 0;
         }
+
+        public void atacaSigilo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void compruebaEntorno()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void dibuja()
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("a");
         }
-        public void atacaSigilo()
-        {
-            throw new NotImplementedException();
-        }
 
         public void entra(Celda puerta)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void habla(string[] texto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void habla(string texto)
         {
             throw new NotImplementedException();
         }
