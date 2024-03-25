@@ -1,6 +1,7 @@
 ﻿using DAW.PRO._2.ProyectoRoguelike.SubC_Celda;
 using DAW.PRO._2.ProyectoRoguelike.SubC_Entidad;
 using DAW.PRO._2.ProyectoRoguelike.SubC_Objeto;
+using System.Numerics;
 using System.Xml.Serialization;
 
 namespace DAW.PRO._2.ProyectoRoguelike.Clases
@@ -14,7 +15,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         int terrenos;
         Tienda tienda;
         List<Entidad> enemigos;
-        List<PNJ> pnjs;
+        Entidad pnj;
         List<Objeto> objetos;
 
         Celda[,] celdas;
@@ -30,24 +31,29 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             alto = 27;
             terrenos = nivel * 3;
             enemigos = new List<Entidad>();
-            pnjs = new List<PNJ>();
             objetos = new List<Objeto>();
             celdas = new Celda[ancho, alto];
-            generaSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
-            creaTerrenos((int)Math.Truncate(nivel * 2.3));
-            spawnEntidades((int)Math.Truncate(nivel * 1.4), (nivel + 1) % 2, (int)Math.Truncate(nivel * 1.4));
+            GeneraSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
+            CreaTerrenos((int)Math.Truncate(nivel * 2.3));
+            Spawns((int)Math.Truncate(nivel * 1.4), (int)Math.Truncate(nivel * 0.5));
         }
 
         // Objetos y entidades
-        void spawnEntidades(int enemigos, int pnjs, int objetos)
+        void Spawns(int enemigos, int objetos)
         {
-            int rx = rng.Next(ancho);
-            int ry = rng.Next(alto);
+            int rx;
+            int ry;
 
             // Protagonista
-            //if (!celdas[rx, ry].ocupada && )
-            Partida.protagonista.spawn(ancho / 2, alto / 2);
-
+            while (!Partida.protagonista.spawneado)
+            {
+                rx = rng.Next(ancho);
+                ry = rng.Next(alto);
+                if (!celdas[rx, ry].ocupada && celdas[rx, ry] is Suelo)
+                {
+                    Partida.protagonista.Spawn(rx, ry);
+                }
+            }
 
             // Enemigos
             for (int i = 0; i < enemigos; i++)
@@ -66,27 +72,150 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 }
             }
 
-            if (this.enemigos.Any())
+            for (int i = 0; i < this.enemigos.Count; i++)
             {
-                for (int i = 0; i < this.enemigos.Count; i++)
+                while (!this.enemigos[i].spawneado)
                 {
                     rx = rng.Next(ancho);
                     ry = rng.Next(alto);
                     if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
                     {
-                        this.enemigos[i].spawn(rx, ry);
+                        this.enemigos[i].Spawn(rx, ry);
+                    }
+                }
+            }
+
+            // Tienda
+            if (nivel - 1 % 3 == 0)
+            {
+                tienda = new Tienda();
+                while (!tienda.spawneado)
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                    {
+                        tienda.Spawn(rx, ry);
                     }
                 }
             }
 
             // PNJ
+            if (nivel == 0)
+            {
+                pnj = new Mision();
+            }
+            else if (nivel % 2 == 0)
+            {
+                pnj = new PNJ();
+            }
+            while (!pnj.spawneado)
+            {
+                rx = rng.Next(ancho);
+                ry = rng.Next(alto);
+                if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                {
+                    pnj.Spawn(rx, ry);
+                }
+            }
+
             // Objetos
-            // Tienda
-        } // COMPLETAR
+            int objetosCreados = 0;
+
+            while (objetosCreados < objetos)
+            {
+                rx = rng.Next(100);
+
+                if (!Mapa.dropMono && rx <= (1.5 * nivel))
+                {
+                    this.objetos.Add(new MonoDeJade());
+                    objetosCreados++;
+                }
+
+                if (!Mapa.dropAtaque && rx > (0.7 * nivel) && rx <= (8.7 * nivel))
+                // esto significa que el droprate es de 8 (si el dado saca entre 0.7 y 8.7
+                // empieza en 0.7 para que la probabilidad se solape en un 50% con la del Mono
+                // Esto tiene sentido porque en cada vuelta del bucle pueden generarse varios objetos, haciendo que la cantidad de objetos no sea estática según el nivel
+                {
+                    if (Partida.protagonista is JugadorGuerrero)
+                    {
+                        this.objetos.Add(new Espada());
+                        objetosCreados++;
+                    }
+                    else if (Partida.protagonista is JugadorMago)
+                    {
+                        this.objetos.Add(new Baston());
+                        objetosCreados++;
+                    }
+                    else if (Partida.protagonista is JugadorPicaro)
+                    {
+                        this.objetos.Add(new Daga());
+                        objetosCreados++;
+                    }
+                }
+
+                if (!Mapa.dropDefensa && rx > (6 * nivel) && rx <= (16 * nivel))
+                // droprate 10
+                // se solapa con el ataque
+                {
+                    if (Partida.protagonista is JugadorGuerrero)
+                    {
+                        this.objetos.Add(new Escudo());
+                        objetosCreados++;
+                    }
+                    else if (Partida.protagonista is JugadorMago)
+                    {
+                        this.objetos.Add(new Anillo());
+                        objetosCreados++;
+                    }
+                    else if (Partida.protagonista is JugadorPicaro)
+                    {
+                        this.objetos.Add(new Capa());
+                        objetosCreados++;
+                    }
+                }
+
+                if (rx >= (25 - nivel * 2) && rx <= (75 + nivel * 2))
+                // droprate de curas: 50% mínimo, aumenta en un 4% por nivel
+                // Si cae cura, la probabilidad de que sea Pan disminuye con el nivel y la de la poción aumenta.
+                // Si no es ni cura ni pan, es manzana, cuyo D-R aumenta hasta el nivel 12, y luego empieza a caer para dar paso a la poción.
+                {
+                    switch (rng.Next(100))
+                    {
+                        case int n when n < 70 - (nivel * 5):
+                            this.objetos.Add(new Pan());
+                            objetosCreados++;
+                            break;
+                        case int n when n >= 99 - (nivel * 4) && n < 100:
+                            this.objetos.Add(new Pocion());
+                            objetosCreados++;
+                            break;
+                        default:
+                            this.objetos.Add(new Manzana());
+                            objetosCreados++;
+                            break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < this.objetos.Count; i++)
+            {
+                while (!this.objetos[i].spawneado)
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                    {
+                        this.objetos[i].Spawn(rx, ry);
+                    }
+                }
+            }
+        }
 
         // Terrenos
-        void creaTerrenos(int terrenos)
+        void CreaTerrenos(int terrenos)
         {
+            // Primero genera una entrada
             // En celdas aleatorias, si es suelo la cambia a:
             // agua (60% prob)
             // lava (30%)
@@ -94,6 +223,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // Repite tanta cantidad de veces como terrenos se pidan
             int rx;
             int ry;
+
+            do
+            {
+                rx = rng.Next(ancho);
+                ry = rng.Next(alto);
+                if (celdas[rx, ry] is Suelo)
+                {
+                    celdas[rx, ry] = new Entrada(rx, ry);
+                }
+            } while (!(celdas[rx, ry] is Entrada));
 
             for (int i = 0; i < terrenos; i++)
             {
@@ -119,7 +258,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
 
         // Mapa
-        public void dibujaSala()
+        public void DibujaSala()
         {
             int posX = 0;
             int posY = 0;
@@ -128,11 +267,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Console.SetCursorPosition(posX, posY + i);
                 for (int j = 0; j < ancho; j++)
                 {
-                    celdas[j, i].dibuja();
+                    celdas[j, i].Dibuja();
                 }
             }
         }
-        void generaSala(int tamanio)
+        void GeneraSala(int tamanio)
         {
             for (int i = 0; i < alto; i++)
             {
@@ -141,9 +280,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     celdas[j, i] = new Muro(j, i);
                 }
             }
-            tiraMuro(tamanio);
+            RandomWalker(tamanio);
         }
-        void tiraMuro(int tamanio)
+        void RandomWalker(int tamanio)
         {
             int direccion;
             int tirado = 0;
@@ -175,8 +314,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 }
 
             } while (tirado < tamanio);
+            celdas[x, y] = new Salida(x, y);
         }
-        Entidad compruebaEntidad(int x, int y)
+        Entidad CompruebaEntidad(int x, int y)
         {
             Entidad hallado = null;
             for (int i = 0; i < enemigos.Count; i++)
@@ -188,9 +328,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     {
                         hallado = enemigos[i];
                     }
-                    else if (pnjs[i].x == x && pnjs[i].y == y)
+                    else if (pnj.x == x && pnj.y == y)
                     {
-                        hallado = pnjs[i];
+                        hallado = pnj;
                     }
                     else if (tienda.x == x && tienda.y == y)
                     {
@@ -200,11 +340,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             }
             return hallado;
         }
-        public Celda getCelda(int x, int y)
+        public Celda GetCelda(int x, int y)
         {
             return celdas[x, y];
         }
-        public void setCelda(int x, int y, Celda nuevaCelda)
+        public void SetCelda(int x, int y, Celda nuevaCelda)
         {
             celdas[x, y] = nuevaCelda;
         }

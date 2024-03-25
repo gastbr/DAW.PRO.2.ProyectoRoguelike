@@ -10,13 +10,18 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     {
         public int valor;
         public int efecto;
-        public void aplicar(Entidad jugador, int stat)
+        public int x;
+        public int y;
+        public bool spawneado = false;
+        public void Spawn(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+            spawneado = true;
+        }
+        public void Aplicar(Entidad jugador, int stat)
         {
             // aplicar el efecto (+vida, +fuerza o +defensa) a la stat correspondiente del jugador correspondiente
         }
-        public int getValor() { return valor; }
-        public void setValor(int valor) { this.valor = valor; }
-        public int getEfecto() { return efecto; }
-        public void setEfecto(int efecto) { this.efecto = efecto; }
     }
 }

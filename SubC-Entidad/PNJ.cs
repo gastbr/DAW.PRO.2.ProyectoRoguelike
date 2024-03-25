@@ -30,10 +30,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             defensa = 0;
             frase = "";
         }
-        public override void dibuja()
+        public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Ï");
         }
         public void habla()

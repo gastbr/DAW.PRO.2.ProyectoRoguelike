@@ -17,6 +17,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             this.x = x;
             this.y = y;
         }
-        public abstract void dibuja();
+        public abstract void Dibuja();
     }
 }

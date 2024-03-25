@@ -1,22 +1,15 @@
-﻿using DAW.PRO._2.ProyectoRoguelike.SubC_Entidad;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAW.PRO._2.ProyectoRoguelike.Clases
+﻿namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Controles
     {
         static ConsoleKey tecla;
-        static public void detectaTecla()
+        static public void DetectaTecla()
         {
             tecla = Console.ReadKey(true).Key;
-            mueve(tecla);
-            interactua(tecla);
+            Mueve(tecla);
+            Interactua(tecla);
         }
-        static void mueve(ConsoleKey tecla)
+        static void Mueve(ConsoleKey tecla)
         {
             switch (tecla)
             {
@@ -38,11 +31,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     break;
             }
         }
-        static void interactua(ConsoleKey tecla)
+        static void Interactua(ConsoleKey tecla)
         {
 
         }
-        static void abreInventario() { }
-        static void abandonaPartida() { }
+        static void AbreInventario() { }
+        static void AbandonaPartida() { }
     }
 }

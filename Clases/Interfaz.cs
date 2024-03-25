@@ -58,7 +58,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.SetCursorPosition(posX, posY + 16);
             Console.Write("Pre :" + $"{Partida.protagonista.preX}".PadLeft(3) + " / " + $"{Partida.protagonista.preY}".PadLeft(3));
             Console.SetCursorPosition(posX, posY + 17);
-            Console.Write("Ves: " + $"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.getSala(Partida.protagonista.salaActual).getCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
+            Console.Write("Ves: " + $"{Mapa.getSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.getSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
             Console.SetCursorPosition(posX, posY + 22);
             Console.Write("CONTROLES:");
             Console.SetCursorPosition(posX, posY + 23);

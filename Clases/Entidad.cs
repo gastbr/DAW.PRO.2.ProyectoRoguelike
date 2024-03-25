@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAW.PRO._2.ProyectoRoguelike.Clases
+﻿namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal abstract class Entidad
     {
@@ -29,7 +23,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public List<Objeto> inventario;
         public Objeto arma;
         public Objeto armadura;
-        public abstract void dibuja();
+        public abstract void Dibuja();
         public void camina(Direccion direccion)
         {
             this.direccion = direccion;
@@ -44,16 +38,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 case Direccion.izquierda: nuevaX--; break;
                 case Direccion.derecha: nuevaX++; break;
             }
-            if (Mapa.getSala(salaActual).getCelda(nuevaX, nuevaY).ocupada == false)
+            if (Mapa.getSala(salaActual).GetCelda(nuevaX, nuevaY).ocupada == false)
             {
                 x = nuevaX;
                 y = nuevaY;
-                Mapa.getSala(salaActual).getCelda(preX, preY).ocupada = false;
-                Mapa.getSala(salaActual).getCelda(x, y).ocupada = true;
+                Mapa.getSala(salaActual).GetCelda(preX, preY).ocupada = false;
+                Mapa.getSala(salaActual).GetCelda(x, y).ocupada = true;
             }
 
         }
-        public void spawn(int x, int y)
+        public void Spawn(int x, int y)
         {
             this.x = x;
             this.y = y;
