@@ -33,7 +33,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             spawnEntidades(nivel * 1, nivel * 1, terrenos);
             spawnEntidades();
         }
-        public void spawnEntidades( )
+        public void spawnEntidades()
         {
             int rx;
             int ry;
@@ -71,6 +71,32 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             //}
             //// pendiente spawn pnj y objetos
         } 
+        void spawnEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
+        {
+            // La tienda solo aparece una vez cada tres niveles
+            if (nivel % 3 == 0)
+            {
+                tienda = new Tienda();
+            }
+            for (int i = 0; i < cantEnemigos; i++)
+            {
+                int r = rng.Next(3);
+                switch (r)
+                {
+                    case 0: this.enemigos.Add(new EnemigoGuerrero()); break;
+                    case 1: this.enemigos.Add(new EnemigoMago()); break;
+                    case 2: this.enemigos.Add(new EnemigoPicaro()); break;
+                }
+            }
+            for (int i = 0; i < cantObjetos; i++)
+            {
+                barajaObjetos(cantObjetos);
+            }
+            for (int i = 0; i < cantTerrenos; i++)
+            {
+                barajaTerrenos(cantTerrenos);
+            }
+        }
         public void dibujaSala()
         {
             int posX = 0;
@@ -128,32 +154,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 
             } while (tirado < tamanio);
         }
-        void spawnEntidades(int cantEnemigos, int cantObjetos, int cantTerrenos)
-        {
-            // La tienda solo aparece una vez cada tres niveles
-            if (nivel % 3 == 0)
-            {
-                tienda = new Tienda();
-            }
-            for (int i = 0; i < cantEnemigos; i++)
-            {
-                int r = rng.Next(3);
-                switch (r)
-                {
-                    case 0: this.enemigos.Add(new EnemigoGuerrero()); break;
-                    case 1: this.enemigos.Add(new EnemigoMago()); break;
-                    case 2: this.enemigos.Add(new EnemigoPicaro()); break;
-                }
-            }
-            for (int i = 0; i < cantObjetos; i++)
-            {
-                barajaObjetos(cantObjetos);
-            }
-            for (int i = 0; i < cantTerrenos; i++)
-            {
-                barajaTerrenos(cantTerrenos);
-            }
-        }
         void barajaObjetos(int objetos)
         {
             while (this.objetos.Count < objetos)
@@ -204,21 +204,21 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                             switch (r1)
                             {
                                 case int k when k >= 0 && k < 15:
-                                    if (r2 <= (30 * nivel))
+                                    if (r2 <= (7 * nivel))
                                     {
                                         celdas[j, i] = new Lava(j, i);
                                         this.terrenos++;
                                     }
                                     break;
                                 case int k when k >= 15 && k < 50:
-                                    if (r2 <= (70 * nivel))
+                                    if (r2 <= (20 * nivel))
                                     {
                                         celdas[j, i] = new Agua(j, i);
                                         this.terrenos++;
                                     }
                                     break;
                                 case int k when k >= 50 && k < 55:
-                                    if (r2 <= (30 * nivel))
+                                    if (r2 <= (7 * nivel))
                                     {
                                         celdas[j, i] = new Trampa(j, i);
                                     }
