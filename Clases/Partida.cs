@@ -10,16 +10,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     internal static class Partida
     {
         static public Entidad protagonista;
-        static public void dibujaPortada()
+        static public void DibujaPortada()
         {
             Console.CursorVisible = false;
         }
-        static public void cargaPartida()
+        static public void CargaPartida()
         {
             // Copiar parte de nuevaPartida()
             // Extraer profesion y datos de archivo de guardado
         }
-        static public void guardaPartida()
+        static public void GuardaPartida()
         {
             // Guardar:
             // Tipo de personaje
@@ -29,16 +29,25 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static public void NuevaPartida(string nombre, Entidad.Profesion profesion)
         {
+            // Limpia la pantalla entera en cada nueva partida
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                for (int j = 0; j < Console.WindowHeight; j++)
+                {
+                    Console.SetCursorPosition(i, j);
+                    Console.Write(" ");
+                }
+            }
             switch (profesion)
             {
                 case Entidad.Profesion.Guerrero: protagonista = new JugadorGuerrero(); break;
                 case Entidad.Profesion.Mago: protagonista = new JugadorMago(); break;
             }
             nombre = nombre.Trim();
-            nombre = nombre.Substring(0, 9);
+            nombre = nombre.Substring(0, Math.Min(nombre.Length, 9));
             nombre = String.Concat(char.ToUpper(nombre[0]) + nombre.Substring(1).ToLower());
             protagonista.nombre = nombre;
-            Mapa.addSala();
+            Mapa.AddSala();
         }
     }
 }

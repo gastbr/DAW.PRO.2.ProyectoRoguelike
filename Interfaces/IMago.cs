@@ -8,8 +8,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Interfaces
 {
     internal interface IMago
     {
-        public void atacaDistancia();
-        public void cura();
-        public void creaPortal();
+        public void AtacaDistancia();
+        public void Cura();
+        public void CreaPortal();
     }
 }

@@ -34,12 +34,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Ï");
         }
-        public void atacaMelee()
+        public void AtacaMelee()
         {
             throw new NotImplementedException();
         }
 
-        public void defiende()
+        public void Defiende()
         {
             throw new NotImplementedException();
         }

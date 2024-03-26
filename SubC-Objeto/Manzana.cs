@@ -9,5 +9,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Objeto
 {
     internal class Manzana : Objeto
     {
+        public Manzana()
+        {
+            nombre = "Manzana";
+        }
     }
 }

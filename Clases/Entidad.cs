@@ -24,6 +24,14 @@
         public Objeto arma;
         public Objeto armadura;
         public abstract void Dibuja();
+        public void Spawn(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+            preX = x;
+            preY = y;
+            spawneado = true;
+        }
         public void Camina(Direccion direccion)
         {
             this.direccion = direccion;
@@ -66,13 +74,98 @@
                     break;
             }
         }
-        public void Spawn(int x, int y)
+        public Entidad ExaminaEntidad()
         {
-            this.x = x;
-            this.y = y;
-            preX = x;
-            preY = y;
-            spawneado = true;
+            Entidad hallado = null;
+            switch (direccion)
+            {
+                case Direccion.arriba:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x, y - 1);
+                    break;
+                case Direccion.abajo:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x, y + 1);
+                    break;
+                case Direccion.derecha:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x + 1, y);
+                    break;
+                case Direccion.izquierda:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x - 1, y);
+                    break;
+            }
+            return hallado;
+        }
+        public Objeto ExaminaObjeto()
+        {
+            Objeto hallado = null;
+            switch (direccion)
+            {
+                case Direccion.arriba:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y - 1);
+                    break;
+                case Direccion.abajo:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y + 1);
+                    break;
+                case Direccion.derecha:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x + 1, y);
+                    break;
+                case Direccion.izquierda:
+                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x - 1, y);
+                    break;
+            }
+            return hallado;
+        }
+        public void RecibeDanio(int ataque)
+        {
+            vidaActual = Math.Max(0, vidaActual - Math.Max(0, ataque - defensa));
+            if (vidaActual <= 0)
+            {
+                Muere();
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                Dibuja();
+                Thread.Sleep(50);
+                Console.SetCursorPosition(x, y);
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write("█");
+                Thread.Sleep(50);
+            }
+        }
+        public void RecibeCura(int cura)
+        {
+            if ((vidaActual + cura) >= vidaMax)
+            {
+                vidaActual = vidaMax;
+            }
+            else
+            {
+                vidaActual += cura;
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                Dibuja();
+                Thread.Sleep(50);
+                Console.SetCursorPosition(x, y);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("█");
+                Thread.Sleep(50);
+            }
+        }
+
+        public void Muere()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Dibuja();
+                Thread.Sleep(50);
+                Console.SetCursorPosition(x, y);
+                Console.Write("💀");
+                Thread.Sleep(50);
+                spawneado = false;
+            }
+            Console.WriteLine("Game Over");
+            Thread.Sleep(200);
         }
     }
 }

@@ -29,22 +29,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             ataque = 5;
             defensa = 0;
         }
-
-        public void atacaMelee()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void compruebaEntorno()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void defiende()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
@@ -52,22 +36,38 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.Write("@");
         }
 
-        public void entra(Celda puerta)
+        public void AtacaMelee()
         {
             throw new NotImplementedException();
         }
 
-        public void interactua()
+        public void Defiende()
         {
             throw new NotImplementedException();
         }
 
-        public void recogeObjeto(Objeto objeto)
+
+        public void Entra(Celda puerta)
         {
             throw new NotImplementedException();
         }
 
-        public void usaObjeto(Objeto objeto)
+        public void Examina()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RecogeObjeto(Objeto objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UsaObjeto(Objeto objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DesechaObjeto(Objeto objeto)
         {
             throw new NotImplementedException();
         }

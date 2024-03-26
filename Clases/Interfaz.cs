@@ -9,7 +9,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Interfaz
     {
-        static string info = "HOMBRE SOSPECHOSO CON LA BRAGUETA BAJADA:\n\"Tráeme el mono de jade antes de que cambie la luna y te daré una buena recompensa.\"";
+        static string info = "HOMBRE SOSPECHOSO CON LA BRAGUETA BAJADA:\n\"Tráeme el mono de jade antes de que cambie la luna o te parto las piernas.\"";
         static int posX = 97;
         static int posY = 0;
         public static void DibujaHUD()
@@ -53,7 +53,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             }
             Console.Write("  /  " + Partida.protagonista.vidaMax);
 
-            /*
+
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(posX, posY + 15);
             Console.Write("Pos: ".PadRight(9) + $"{Partida.protagonista.x}".PadLeft(3) + " / " + $"{Partida.protagonista.y}".PadLeft(3));
@@ -63,8 +63,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.Write("Terreno:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
             Console.SetCursorPosition(posX, posY + 18);
             Console.Write("Ves:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
-            */
 
+            /*
             Console.SetCursorPosition(posX, posY + 11);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write('@');
@@ -117,7 +117,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write('>');
             Console.Write(" - ");
-            Console.Write("Salida");
+            Console.Write("Salida");*/
 
             //////////////////////////
 
@@ -132,7 +132,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.SetCursorPosition(posX, posY + 26);
             Console.Write("Esc:".PadRight(9) + "OPCIONES".PadLeft(9));
         }
-        static public void dibujaInfo(string texto)
+        static public void DibujaInfo(string texto)
         {
             info = texto.PadRight(360).Substring(0, 360);
             Console.SetCursorPosition(0, 27);

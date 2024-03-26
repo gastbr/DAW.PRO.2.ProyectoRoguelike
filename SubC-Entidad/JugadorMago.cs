@@ -30,22 +30,22 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             defensa = 0;
         }
 
-        public void atacaDistancia()
+        public void AtacaDistancia()
         {
             throw new NotImplementedException();
         }
 
-        public void compruebaEntorno()
+        public void CreaPortal()
         {
             throw new NotImplementedException();
         }
 
-        public void creaPortal()
+        public void Cura()
         {
             throw new NotImplementedException();
         }
 
-        public void cura()
+        public void DesechaObjeto(Objeto objeto)
         {
             throw new NotImplementedException();
         }
@@ -57,22 +57,27 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.Write("@");
         }
 
-        public void entra(Celda puerta)
+        public void Entra(Celda puerta)
         {
             throw new NotImplementedException();
         }
 
-        public void interactua()
+        public void Examina()
         {
             throw new NotImplementedException();
         }
 
-        public void recogeObjeto(Objeto objeto)
+        public void RecibeDanio()
         {
             throw new NotImplementedException();
         }
 
-        public void usaObjeto(Objeto objeto)
+        public void RecogeObjeto(Objeto objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UsaObjeto(Objeto objeto)
         {
             throw new NotImplementedException();
         }

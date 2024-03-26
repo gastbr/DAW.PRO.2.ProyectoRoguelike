@@ -9,10 +9,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Interfaces
 {
     internal interface IJugador
     {
-        public void usaObjeto(Objeto objeto);
-        public void recogeObjeto(Objeto objeto);
-        public void entra(Celda puerta);
-        public void interactua();
-        public void compruebaEntorno();
+        public void UsaObjeto(Objeto objeto);
+        public void RecogeObjeto(Objeto objeto);
+        public void DesechaObjeto(Objeto objeto);
+        public void Entra(Celda puerta);
+        public void Examina();
     }
 }

@@ -8,7 +8,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Interfaces
 {
     internal interface IGuerrero
     {
-        public void atacaMelee();
-        public void defiende();
+        public void AtacaMelee();
+        public void Defiende();
     }
 }

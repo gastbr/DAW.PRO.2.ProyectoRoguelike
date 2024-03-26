@@ -19,7 +19,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("~");
         }
-        public void personajeMojado()
+        public void PersonajeMojado()
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Blue;

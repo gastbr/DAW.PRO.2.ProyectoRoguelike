@@ -34,17 +34,17 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Ï");
         }
-        public void atacaDistancia()
+        public void AtacaDistancia()
         {
             throw new NotImplementedException();
         }
 
-        public void creaPortal()
+        public void CreaPortal()
         {
             throw new NotImplementedException();
         }
 
-        public void cura()
+        public void Cura()
         {
             throw new NotImplementedException();
         }

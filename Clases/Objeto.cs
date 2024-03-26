@@ -9,6 +9,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal abstract class Objeto
     {
+        public string nombre;
         public int valor;
         public int efecto;
         public int x;
