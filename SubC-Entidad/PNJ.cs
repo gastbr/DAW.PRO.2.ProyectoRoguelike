@@ -34,7 +34,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Ï");
+            Console.Write("ï");
         }
         public void habla()
         {

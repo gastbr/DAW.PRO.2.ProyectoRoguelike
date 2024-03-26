@@ -27,7 +27,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // Posición del jugador (x, y, salaActual)
             // Salas dibujadas? (si es posible)
         }
-        static public void nuevaPartida(string nombre, Entidad.Profesion profesion)
+        static public void NuevaPartida(string nombre, Entidad.Profesion profesion)
         {
             switch (profesion)
             {

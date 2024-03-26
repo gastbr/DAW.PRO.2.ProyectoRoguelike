@@ -16,7 +16,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write(">");
         }
     }

@@ -24,7 +24,7 @@
         public Objeto arma;
         public Objeto armadura;
         public abstract void Dibuja();
-        public void camina(Direccion direccion)
+        public void Camina(Direccion direccion)
         {
             this.direccion = direccion;
             preX = x;
@@ -38,14 +38,33 @@
                 case Direccion.izquierda: nuevaX--; break;
                 case Direccion.derecha: nuevaX++; break;
             }
-            if (Mapa.getSala(salaActual).GetCelda(nuevaX, nuevaY).ocupada == false)
+            if (Mapa.GetSala(salaActual).GetCelda(nuevaX, nuevaY).ocupada == false)
             {
                 x = nuevaX;
                 y = nuevaY;
-                Mapa.getSala(salaActual).GetCelda(preX, preY).ocupada = false;
-                Mapa.getSala(salaActual).GetCelda(x, y).ocupada = true;
+                Mapa.GetSala(salaActual).GetCelda(preX, preY).ocupada = false;
+                Mapa.GetSala(salaActual).GetCelda(x, y).ocupada = true;
             }
 
+        }
+        public void Explora()
+        {
+
+            switch (direccion)
+            {
+                case Direccion.arriba:
+                    Mapa.GetSala(salaActual).CompruebaEntidad(x, y - 1);
+                    break;
+                case Direccion.abajo:
+                    Mapa.GetSala(salaActual).CompruebaEntidad(x, y + 1);
+                    break;
+                case Direccion.izquierda:
+                    Mapa.GetSala(salaActual).CompruebaEntidad(x - 1, y);
+                    break;
+                case Direccion.derecha:
+                    Mapa.GetSala(salaActual).CompruebaEntidad(x + 1, y);
+                    break;
+            }
         }
         public void Spawn(int x, int y)
         {

@@ -31,8 +31,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Ï");
         }
         public void atacaSigilo()
         {
