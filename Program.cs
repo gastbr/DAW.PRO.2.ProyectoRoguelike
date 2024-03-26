@@ -5,12 +5,12 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Partida.nuevaPartida("             IgUYUgUTuudGauGUYuGYKUYTUGTtgu        ", Entidad.Profesion.Guerrero);
-        Mapa.getSala(0).DibujaSala();
+        Partida.NuevaPartida("             IgUYUgUTuudGauGUYuGYKUYTUGTtgu        ", Entidad.Profesion.Guerrero);
+        Mapa.GetSala(0).DibujaSala();
         while (true)
         {
-            Interfaz.dibujaHUD();
-            Interfaz.dibujaEntidades();
+            Interfaz.DibujaHUD();
+            Mapa.DibujaEntidades();
             Controles.DetectaTecla();
         }
     }

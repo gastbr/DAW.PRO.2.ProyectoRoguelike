@@ -27,13 +27,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // Posición del jugador (x, y, salaActual)
             // Salas dibujadas? (si es posible)
         }
-        static public void nuevaPartida(string nombre, Entidad.Profesion profesion)
+        static public void NuevaPartida(string nombre, Entidad.Profesion profesion)
         {
             switch (profesion)
             {
                 case Entidad.Profesion.Guerrero: protagonista = new JugadorGuerrero(); break;
                 case Entidad.Profesion.Mago: protagonista = new JugadorMago(); break;
-                case Entidad.Profesion.Picaro: protagonista = new JugadorPicaro(); break;
             }
             nombre = nombre.Trim();
             nombre = nombre.Substring(0, 9);

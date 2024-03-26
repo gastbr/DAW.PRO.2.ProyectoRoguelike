@@ -32,7 +32,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("$");
         }
         public void habla() { }
