@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Celda">
-    <Position X="21.25" Y="10.75" Width="1.5" />
+    <Position X="20" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAABgAAAAAAA=</HashCode>
       <FileName>Clases\Celda.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Controles">
-    <Position X="5.25" Y="10.75" Width="1.5" />
+    <Position X="29.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAQgAAACA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAIYAAAAAI=</HashCode>
       <FileName>Clases\Controles.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Entidad">
-    <Position X="10.75" Y="10.75" Width="1.5" />
+    <Position X="10" Y="5.5" Width="1.5" />
     <NestedTypes>
       <Enum Name="DAW.PRO._2.ProyectoRoguelike.Clases.Entidad.Profesion" Collapsed="true">
         <TypeIdentifier>
@@ -29,259 +29,222 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AgYMAIgUCEACoACAoEiGgIAJICQAAIAIAKBoBGCAIEE=</HashCode>
+      <HashCode>AQIEAAAAAAAAoACAIAEAgIBAIKAAAIAAAABgBACAIME=</HashCode>
       <FileName>Clases\Entidad.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Interfaz">
-    <Position X="7" Y="10.75" Width="1.5" />
+    <Position X="31" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>JAAAAAAIAIAAAADABABAAAAAAAAAAACAAAAAwAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAAwAAAAAA=</HashCode>
       <FileName>Clases\Interfaz.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Mapa">
-    <Position X="21.25" Y="15" Width="1.5" />
+    <Position X="32.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAAEAAAAAAAAAIgAEAAgAAAAAAAAAEBAA=</HashCode>
       <FileName>Clases\Mapa.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Objeto">
-    <Position X="32.25" Y="19" Width="1.5" />
+    <Position X="11.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAABAACQAAAAAAABABAQAAAAAAAAAQAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAIAEAAABAAAAABAAIAABgAAAAQAA=</HashCode>
       <FileName>Clases\Objeto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Partida">
-    <Position X="3.5" Y="10.75" Width="1.5" />
+    <Position X="25.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAACAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAACAAAAAAAAAAAAAAAAAAACCAAAAAAAAAAE=</HashCode>
       <FileName>Clases\Partida.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.Clases.Sala">
-    <Position X="23" Y="15" Width="1.5" />
+    <Position X="27.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAEAAEAAAAAAAABgQAACAADAAIAAAAAAAKABAgAkAA=</HashCode>
+      <HashCode>AQgUAEACAAAAAgAAgIEACAABkAIAAAAAAAIABIAAAAA=</HashCode>
       <FileName>Clases\Sala.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Anillo">
-    <Position X="24.5" Y="22.25" Width="1.5" />
+    <Position X="8" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Anillo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Baston">
-    <Position X="29" Y="22.25" Width="1.5" />
+    <Position X="12.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Baston.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Capa">
-    <Position X="33.5" Y="22.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SubC-Objeto\Capa.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Daga">
-    <Position X="38" Y="22.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SubC-Objeto\Daga.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Escudo">
-    <Position X="40.25" Y="22.25" Width="1.5" />
+    <Position X="17" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Escudo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Espada">
-    <Position X="42.5" Y="22.25" Width="1.5" />
+    <Position X="19.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Espada.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Manzana">
-    <Position X="22.25" Y="22.25" Width="1.5" />
+    <Position X="3.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Manzana.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.MonoDeJade">
+    <Position X="5.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SubC-Objeto\MonoDeJade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Pan">
-    <Position X="26.75" Y="22.25" Width="1.5" />
+    <Position X="10.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Pan.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.Pocion">
-    <Position X="31.25" Y="22.25" Width="1.5" />
+    <Position X="14.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Objeto\Pocion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Objeto.SantoGrial">
-    <Position X="35.75" Y="22.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SubC-Objeto\SantoGrial.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Agua">
-    <Position X="23.5" Y="13.25" Width="1.5" />
+    <Position X="22.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Agua.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Entrada">
-    <Position X="25.75" Y="13.25" Width="1.5" />
+    <Position X="26.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Entrada.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Lava">
-    <Position X="28" Y="13.25" Width="1.5" />
+    <Position X="13.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Lava.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Muro">
-    <Position X="14.5" Y="13.25" Width="1.5" />
+    <Position X="15.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Muro.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Salida">
-    <Position X="16.75" Y="13.25" Width="1.5" />
+    <Position X="17.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Salida.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Suelo">
-    <Position X="19" Y="13.25" Width="1.5" />
+    <Position X="20" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Suelo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Celda.Trampa">
-    <Position X="21.25" Y="13.25" Width="1.5" />
+    <Position X="24.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Celda\Trampa.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.EnemigoGuerrero">
-    <Position X="12" Y="22.25" Width="1.5" />
+    <Position X="14.5" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAQAAAAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>SubC-Entidad\EnemigoGuerrero.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.EnemigoMago">
-    <Position X="16.5" Y="22.25" Width="1.5" />
+    <Position X="3.25" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAQQAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAQQAAAAA=</HashCode>
       <FileName>SubC-Entidad\EnemigoMago.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.EnemigoPicaro">
-    <Position X="18.75" Y="22.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAAAEAAAAAAAAAAAAIAAAAABAAAAAA=</HashCode>
-      <FileName>SubC-Entidad\EnemigoPicaro.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.JugadorGuerrero">
-    <Position X="3" Y="22.25" Width="1.5" />
+    <Position X="5.5" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAFIAQAAAAAAAAAEAAAAAQAAQAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAFIAQEAAAAAAAAAAAAABQAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>SubC-Entidad\JugadorGuerrero.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.JugadorMago">
-    <Position X="5.25" Y="22.25" Width="1.5" />
+    <Position X="7.75" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAFIAQAAAAAAAAAEAAAAAAAAQAAAAAAAAAQQAAAAA=</HashCode>
+      <HashCode>AAIAFIAQEAAAAAAAAAAAAABAAAAAAAAAAAAAQQAAAAA=</HashCode>
       <FileName>SubC-Entidad\JugadorMago.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.JugadorPicaro">
-    <Position X="7.5" Y="22.25" Width="1.5" />
+  <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.Mision">
+    <Position X="10" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAFIAQAABAAAAAAEAAAAAAAAQAAAIAAAAABAAAAAA=</HashCode>
-      <FileName>SubC-Entidad\JugadorPicaro.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAQAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>SubC-Entidad\Mision.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.PNJ">
-    <Position X="9.75" Y="22.25" Width="1.5" />
+    <Position X="12.25" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAABAAAAEAAAAAAAAQAAAAAAABAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAABAAAAAAAAABAAAQAAAAAAABAAAAAAAA=</HashCode>
       <FileName>SubC-Entidad\PNJ.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DAW.PRO._2.ProyectoRoguelike.SubC_Entidad.Tienda">
-    <Position X="14.25" Y="22.25" Width="1.5" />
+    <Position X="16.75" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAgAIAAEABACAAAAQAAAQAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAAAAgAIAAAABACBAAAQAAAQAAAAAAAAAAAA=</HashCode>
       <FileName>SubC-Entidad\Tienda.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Program">
-    <Position X="1.75" Y="10.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Interface Name="DAW.PRO._2.ProyectoRoguelike.Interfaces.IGuerrero">
-    <Position X="15.25" Y="25.75" Width="1.5" />
+    <Position X="20.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IGuerrero.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DAW.PRO._2.ProyectoRoguelike.Interfaces.IJugador">
-    <Position X="17" Y="25.75" Width="1.5" />
+    <Position X="22.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAFIAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAFIAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IJugador.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="DAW.PRO._2.ProyectoRoguelike.Interfaces.IMago">
-    <Position X="18.75" Y="25.75" Width="1.5" />
+    <Position X="24" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAA=</HashCode>
       <FileName>Interfaces\IMago.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="DAW.PRO._2.ProyectoRoguelike.Interfaces.IPicaro">
-    <Position X="13.5" Y="25.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAA=</HashCode>
-      <FileName>Interfaces\IPicaro.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
