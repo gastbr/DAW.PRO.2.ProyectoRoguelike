@@ -9,7 +9,7 @@
         public int preY;
         public bool spawneado;
         public int salaActual;
-        public enum Profesion { Guerrero, Mago, Picaro, PNJ, Tienda };
+        public enum Profesion { Guerrero, Mago, PNJ, Tienda };
         public Profesion profesion;
         public enum Direccion { arriba, abajo, izquierda, derecha };
         public Direccion direccion;

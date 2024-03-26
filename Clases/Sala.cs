@@ -60,16 +60,13 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // Enemigos
             for (int i = 0; i < enemigos; i++)
             {
-                switch (rng.Next(3))
+                switch (rng.Next(2))
                 {
                     case 0:
                         this.enemigos.Add(new EnemigoGuerrero());
                         break;
                     case 1:
                         this.enemigos.Add(new EnemigoMago());
-                        break;
-                    case 2:
-                        this.enemigos.Add(new EnemigoPicaro());
                         break;
                 }
             }
@@ -151,11 +148,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                         this.objetos.Add(new Baston());
                         objetosCreados++;
                     }
-                    else if (Partida.protagonista is JugadorPicaro)
-                    {
-                        this.objetos.Add(new Daga());
-                        objetosCreados++;
-                    }
                 }
 
                 if (!Mapa.dropDefensa && rx > (6 * nivel) && rx <= (16 * nivel))
@@ -170,11 +162,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     else if (Partida.protagonista is JugadorMago)
                     {
                         this.objetos.Add(new Anillo());
-                        objetosCreados++;
-                    }
-                    else if (Partida.protagonista is JugadorPicaro)
-                    {
-                        this.objetos.Add(new Capa());
                         objetosCreados++;
                     }
                 }

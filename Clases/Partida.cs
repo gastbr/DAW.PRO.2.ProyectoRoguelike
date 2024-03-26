@@ -33,7 +33,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             {
                 case Entidad.Profesion.Guerrero: protagonista = new JugadorGuerrero(); break;
                 case Entidad.Profesion.Mago: protagonista = new JugadorMago(); break;
-                case Entidad.Profesion.Picaro: protagonista = new JugadorPicaro(); break;
             }
             nombre = nombre.Trim();
             nombre = nombre.Substring(0, 9);
