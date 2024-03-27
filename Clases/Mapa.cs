@@ -22,5 +22,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             return salas[index];
         }
+        static public void BorrarMapa()
+        {
+            salas.Clear();
+        }
     }
 }

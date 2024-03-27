@@ -43,17 +43,30 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         // Objetos y entidades
         void Spawns(int enemigos, int objetos)
         {
-            int rx;
-            int ry;
+            int rx = 0;
+            int ry = 0;
 
             // Protagonista
+            for (int i = 0; i < alto; i++)
+            {
+                for (int j = 0; j < ancho; j++)
+                {
+                    if (celdas[j, i] is Entrada)
+                    {
+                        rx = j;
+                        ry = i;
+                    }
+                }
+            }
+
             while (!Partida.protagonista.spawneado)
             {
-                rx = rng.Next(ancho);
-                ry = rng.Next(alto);
-                if (!celdas[rx, ry].ocupada && celdas[rx, ry] is Suelo)
+                int x = rng.Next(2);
+                int y = rng.Next(2);
+
+                if (celdas[rx + x, ry + y] is Suelo)
                 {
-                    Partida.protagonista.Spawn(rx, ry);
+                    Partida.protagonista.Spawn(rx + x, ry + y);
                 }
             }
 
@@ -92,7 +105,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 {
                     rx = rng.Next(ancho);
                     ry = rng.Next(alto);
-                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
                     {
                         tienda.Spawn(rx, ry);
                         celdas[rx, ry].ocupada = true;
@@ -113,7 +126,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             {
                 rx = rng.Next(ancho);
                 ry = rng.Next(alto);
-                if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
                 {
                     pnj.Spawn(rx, ry);
                     celdas[rx, ry].ocupada = true;
@@ -271,6 +284,32 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
 
         // Terrenos
+        bool CeldaAislada(int x, int y)
+        {
+            // Si todas las celdas que rodean a la que entra por parámetros son suelo, devuelve TRUE
+            // Si alguna NO es suelo, devuelve false
+            // También comprueba si están todas sin ocupar
+            return
+                (
+                celdas[x - 1, y - 1] is Suelo &&
+                celdas[x - 1, y] is Suelo &&
+                celdas[x - 1, y + 1] is Suelo &&
+                celdas[x, y - 1] is Suelo &&
+                celdas[x, y + 1] is Suelo &&
+                celdas[x + 1, y - 1] is Suelo &&
+                celdas[x + 1, y] is Suelo &&
+                celdas[x + 1, y + 1] is Suelo &&
+
+                !celdas[x - 1, y - 1].ocupada &&
+                !celdas[x - 1, y].ocupada &&
+                !celdas[x - 1, y + 1].ocupada &&
+                !celdas[x, y - 1].ocupada &&
+                !celdas[x, y + 1].ocupada &&
+                !celdas[x + 1, y - 1].ocupada &&
+                !celdas[x + 1, y].ocupada &&
+                !celdas[x + 1, y + 1].ocupada
+                );
+        }
         void CreaTerrenos(int terrenos)
         {
             // Primero genera una entrada

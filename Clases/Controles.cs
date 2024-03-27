@@ -5,14 +5,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     internal static class Controles
     {
         static ConsoleKey TPulsada;
-        static ConsoleKey TArriba = ConsoleKey.UpArrow;
-        static ConsoleKey TAbajo = ConsoleKey.DownArrow;
-        static ConsoleKey TDerecha = ConsoleKey.RightArrow;
-        static ConsoleKey TIzquierda = ConsoleKey.LeftArrow;
-        static ConsoleKey TExaminar = ConsoleKey.C;
+        static ConsoleKey TArriba = ConsoleKey.W;
+        static ConsoleKey TAbajo = ConsoleKey.S;
+        static ConsoleKey TDerecha = ConsoleKey.D;
+        static ConsoleKey TIzquierda = ConsoleKey.A;
+        static ConsoleKey TExaminar = ConsoleKey.Q;
         static ConsoleKey TAtaque = ConsoleKey.Spacebar;
-        static ConsoleKey THabilidad = ConsoleKey.X;
-        static ConsoleKey TInventario = ConsoleKey.Z;
+        static ConsoleKey THabilidad = ConsoleKey.E;
+        static ConsoleKey TInventario = ConsoleKey.F;
         static ConsoleKey TMenu = ConsoleKey.Escape;
 
         public static void DetectaTecla()

@@ -29,6 +29,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static public void NuevaPartida(string nombre, Entidad.Profesion profesion)
         {
+            Mapa.BorrarMapa();
             // Limpia la pantalla entera en cada nueva partida
             for (int i = 0; i < Console.WindowWidth; i++)
             {
