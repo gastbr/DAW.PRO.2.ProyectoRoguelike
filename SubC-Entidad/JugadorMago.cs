@@ -28,6 +28,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 30;
             ataque = 3;
             defensa = 0;
+            frases = File.ReadAllLines("./../../../Textos/FrasesMago");
         }
 
         public void AtacaDistancia()

@@ -9,6 +9,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Partida
     {
+        static public Random rng = new Random();
         static public Entidad protagonista;
         static public void DibujaPortada()
         {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 45;
             ataque = 5;
             defensa = 0;
-            frase = "Me pego con quien sea en un segundo";
+            frases = File.ReadAllLines("./../../../textos/FrasesGuerrero");
         }
         public override void Dibuja()
         {
@@ -55,8 +56,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             {
                 if (salaActual > 0)
                 {
-                    Mapa.SalaAnterior();
                     salaActual--;
+                    Mapa.SalaAnterior();
                 }
                 else
                 {
@@ -65,8 +66,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             }
             if (puerta is Salida)
             {
-                Mapa.SiguienteSala();
                 salaActual++;
+                Mapa.SiguienteSala();
             }
         }
         public override void Examina()
@@ -88,7 +89,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 switch (ExaminaCelda())
                 {
                     case Agua:
-                        Habla("Un pequeño charco de agua. Dicen las aguas de estas tierras son curativas");
+                        Habla("Un pequeño charco de agua. Dicen que las aguas de estas tierras son curativas");
                         break;
                     case Lava:
                         Habla("Lava. Como agua, pero muy caliente y burbujeante. Mejor no acercarse");
@@ -106,7 +107,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 Habla();
             }
         }
-
         public void RecogeObjeto(Objeto objeto)
         {
             inventario.Add(objeto);

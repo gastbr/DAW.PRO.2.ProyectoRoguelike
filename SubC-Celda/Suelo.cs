@@ -11,6 +11,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
     {
         public Suelo(int x, int y) : base(x, y)
         {
+            nombre = "Suelo";
         }
 
         public override void Dibuja()

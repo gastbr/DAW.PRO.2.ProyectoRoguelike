@@ -10,7 +10,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
 {
     internal class Mision : Entidad
     {
-        string frase;
         public Mision()
         {
             nombre = "Hombre misterioso con la bragueta bajada";
@@ -28,17 +27,13 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 15;
             ataque = 3;
             defensa = 0;
-            frase = "";
+            frases = File.ReadAllLines("./../../../Textos/FrasesMision");
         }
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("ï");
-        }
-        void habla()
-        {
-            Interfaz.Escribe(nombre, frase);
         }
     }
 }

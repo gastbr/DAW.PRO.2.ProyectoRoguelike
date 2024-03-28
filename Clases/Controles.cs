@@ -9,7 +9,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static ConsoleKey TAbajo = ConsoleKey.DownArrow;
         static ConsoleKey TDerecha = ConsoleKey.RightArrow;
         static ConsoleKey TIzquierda = ConsoleKey.LeftArrow;
-        static ConsoleKey TExaminar = ConsoleKey.W;
+        static ConsoleKey TExaminar = ConsoleKey.E;
         static ConsoleKey TAtaque = ConsoleKey.Spacebar;
         static ConsoleKey THabilidad = ConsoleKey.C;
         static ConsoleKey TInventario = ConsoleKey.Q;
@@ -67,21 +67,21 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static void Mueve(ConsoleKey tecla)
         {
             // No se puede usar un SWITCH porque el SWITCH no acepta variables como casos.
-            // El switch se comprueba de forma estática o algo de eso, el IF no (dinámico).
+            // El switch se comprueba de forma estática o algo de eso, el IF en cambio no (dinámico).
 
-            if (tecla == TArriba)
+            if (tecla == TArriba || tecla == ConsoleKey.W)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.arriba);
             }
-            else if (tecla == TAbajo)
+            else if (tecla == TAbajo || tecla == ConsoleKey.S)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.abajo);
             }
-            else if (tecla == TDerecha)
+            else if (tecla == TDerecha || tecla == ConsoleKey.D)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.derecha);
             }
-            else if (tecla == TIzquierda)
+            else if (tecla == TIzquierda || tecla == ConsoleKey.A)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.izquierda);
             }

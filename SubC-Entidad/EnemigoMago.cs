@@ -12,7 +12,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
     {
         public EnemigoMago()
         {
-            nombre = "";
+            nombre = "Enemigo";
             x = 0;
             y = 0;
             preX = x;
@@ -27,6 +27,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 30;
             ataque = 3;
             defensa = 0;
+            frases = File.ReadAllLines("./../../../Textos/FrasesEnemigo");
         }
         public override void Dibuja()
         {

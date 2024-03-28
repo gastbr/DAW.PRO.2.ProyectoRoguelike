@@ -12,6 +12,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
     {
         public Trampa(int x, int y) : base(x, y)
         {
+            nombre = "Trampa";
         }
 
         public override void Dibuja()

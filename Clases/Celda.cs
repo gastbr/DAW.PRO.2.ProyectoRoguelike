@@ -8,6 +8,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal abstract class Celda
     {
+        public string nombre;
         public bool ocupada;
         public int x;
         public int y;

@@ -12,7 +12,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
     {
         public Tienda()
         {
-            nombre = "El tendero Miguelillo";
+            nombre = "Miguelillo";
             x = 0;
             y = 0;
             preX = x;
@@ -28,6 +28,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 7;
             ataque = 8650;
             defensa = 3700;
+            frases = File.ReadAllLines("./../../../Textos/FrasesTienda");
         }
         public override void Dibuja()
         {

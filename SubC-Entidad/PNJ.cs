@@ -10,10 +10,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
 {
     internal class PNJ : Entidad
     {
-        string frase;
         public PNJ()
         {
-            nombre = "";
+            nombre = File.ReadAllLines("./../../../Textos/NombresPNJ")[Partida.rng.Next(File.ReadAllLines("./../../../Textos/NombresPNJ").Length)];
             x = 0;
             y = 0;
             preX = x;
@@ -28,7 +27,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             vidaActual = 15;
             ataque = 3;
             defensa = 0;
-            frase = "";
+            frases = File.ReadAllLines("./../../../Textos/FrasesPNJ");
         }
         public override void Dibuja()
         {
@@ -36,11 +35,5 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("ï");
         }
-        public void habla()
-        {
-
-        }
-        public void setFrase(string frase) { this.frase = frase; }
-        public string getFrase() { return this.frase; }
     }
 }

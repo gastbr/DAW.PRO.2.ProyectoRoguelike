@@ -24,7 +24,7 @@
         public List<Objeto> inventario;
         public Objeto arma;
         public Objeto armadura;
-        public string frase;
+        public string[] frases;
         public abstract void Dibuja();
         public void Spawn(int id, int x, int y)
         {
@@ -61,8 +61,25 @@
             }
 
         }
+        public string Ve()
+        {
+            string texto = "";
+            if (ExaminaEntidad() is not null)
+            {
+                texto = ExaminaEntidad().nombre;
+            } else if (ExaminaObjeto() is not null)
+            {
+                texto = ExaminaObjeto().nombre;
+            } else
+            {
+                texto = ExaminaCelda().nombre;
+            }
+
+            return texto;
+        }
         public virtual void Examina()
         {
+
         }
         public Entidad ExaminaEntidad()
         {
@@ -70,16 +87,16 @@
             switch (direccion)
             {
                 case Direccion.arriba:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x, y - 1);
+                    hallado = Mapa.GetSala(salaActual).CompruebaEntidad(x, y - 1);
                     break;
                 case Direccion.abajo:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x, y + 1);
+                    hallado = Mapa.GetSala(salaActual).CompruebaEntidad(x, y + 1);
                     break;
                 case Direccion.derecha:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x + 1, y);
+                    hallado = Mapa.GetSala(salaActual).CompruebaEntidad(x + 1, y);
                     break;
                 case Direccion.izquierda:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaEntidad(x - 1, y);
+                    hallado = Mapa.GetSala(salaActual).CompruebaEntidad(x - 1, y);
                     break;
             }
             return hallado;
@@ -87,25 +104,25 @@
         public Objeto ExaminaObjeto()
         {
             Objeto hallado = null;
-            if (Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y) is not null)
+            if (Mapa.GetSala(salaActual).CompruebaObjeto(x, y) is not null)
             {
-                hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y);
+                hallado = Mapa.GetSala(salaActual).CompruebaObjeto(x, y);
             }
             else
             {
                 switch (direccion)
                 {
                     case Direccion.arriba:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y - 1);
+                        hallado = Mapa.GetSala(salaActual).CompruebaObjeto(x, y - 1);
                         break;
                     case Direccion.abajo:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y + 1);
+                        hallado = Mapa.GetSala(salaActual).CompruebaObjeto(x, y + 1);
                         break;
                     case Direccion.derecha:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x + 1, y);
+                        hallado = Mapa.GetSala(salaActual).CompruebaObjeto(x + 1, y);
                         break;
                     case Direccion.izquierda:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x - 1, y);
+                        hallado = Mapa.GetSala(salaActual).CompruebaObjeto(x - 1, y);
                         break;
                 }
             }
@@ -114,25 +131,25 @@
         public Celda ExaminaCelda()
         {
             Celda hallado = null;
-            if (Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y) is not SubC_Celda.Suelo)
+            if (Mapa.GetSala(salaActual).GetCelda(x, y) is not SubC_Celda.Suelo)
             {
-                hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y);
+                hallado = Mapa.GetSala(salaActual).GetCelda(x, y);
             }
             else
             {
                 switch (direccion)
                 {
                     case Direccion.arriba:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y - 1);
+                        hallado = Mapa.GetSala(salaActual).GetCelda(x, y - 1);
                         break;
                     case Direccion.abajo:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y + 1);
+                        hallado = Mapa.GetSala(salaActual).GetCelda(x, y + 1);
                         break;
                     case Direccion.derecha:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x + 1, y);
+                        hallado = Mapa.GetSala(salaActual).GetCelda(x + 1, y);
                         break;
                     case Direccion.izquierda:
-                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x - 1, y);
+                        hallado = Mapa.GetSala(salaActual).GetCelda(x - 1, y);
                         break;
                 }
             }
@@ -190,9 +207,9 @@
             Console.WriteLine("Game Over");
             Thread.Sleep(200);
         }
-        public virtual void Habla()
+        public void Habla()
         {
-            Interfaz.Escribe(nombre, frase);
+            Interfaz.Escribe(nombre, frases[Partida.rng.Next(frases.Length)]);
         }
         public virtual void Habla(string frase)
         {

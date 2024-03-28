@@ -24,15 +24,15 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static public void SiguienteSala()
         {
-            if (Partida.protagonista.salaActual == salas.Count - 1)
+            if (Partida.protagonista.salaActual == salas.Count)
             {
                 AddSala();
             }
-            salas[Partida.protagonista.salaActual + 1].DibujaSala();
+            salas[Partida.protagonista.salaActual].DibujaSala();
         }
         static public void SalaAnterior()
         {
-            salas[Partida.protagonista.salaActual - 1].DibujaSala();
+            salas[Partida.protagonista.salaActual].DibujaSala();
         }
         static public void BorrarMapa()
         {
