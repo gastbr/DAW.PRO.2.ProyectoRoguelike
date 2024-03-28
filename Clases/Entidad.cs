@@ -3,6 +3,7 @@
     internal abstract class Entidad
     {
         public string nombre;
+        public int id;
         public int x;
         public int y;
         public int preX;
@@ -24,8 +25,9 @@
         public Objeto arma;
         public Objeto armadura;
         public abstract void Dibuja();
-        public void Spawn(int x, int y)
+        public void Spawn(int id, int x, int y)
         {
+            this.id = id;
             this.x = x;
             this.y = y;
             preX = x;
@@ -46,12 +48,15 @@
                 case Direccion.izquierda: nuevaX--; break;
                 case Direccion.derecha: nuevaX++; break;
             }
+
             if (Mapa.GetSala(salaActual).GetCelda(nuevaX, nuevaY).ocupada == false)
             {
                 x = nuevaX;
                 y = nuevaY;
                 Mapa.GetSala(salaActual).GetCelda(preX, preY).ocupada = false;
                 Mapa.GetSala(salaActual).GetCelda(x, y).ocupada = true;
+                Mapa.GetSala(salaActual).GetCelda(x, y).entidad = this.GetType();
+                Mapa.GetSala(salaActual).GetCelda(x, y).idEntidad = this.id;
             }
 
         }

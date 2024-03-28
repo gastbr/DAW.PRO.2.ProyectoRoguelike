@@ -10,10 +10,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     internal abstract class Objeto
     {
         public string nombre;
-        public int valor;
-        public int efecto;
+        public int id;
         public int x;
         public int y;
+        public int valor;
+        public int efecto;
         public bool spawneado = false;
         public void Dibuja()
         {
@@ -21,11 +22,12 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             {
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("·");
+                Console.Write("o");
             }
         }
-        public void Spawn(int x, int y)
+        public void Spawn(int id, int x, int y)
         {
+            this.id = id;
             this.x = x;
             this.y = y;
             spawneado = true;

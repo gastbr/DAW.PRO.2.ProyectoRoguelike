@@ -11,9 +11,17 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public bool ocupada;
         public int x;
         public int y;
+        public Type? entidad;
+        public Type? objeto;
+        public int? idEntidad;
+        public int? idObjeto;
         public Celda(int x, int y)
         {
             ocupada = false;
+            entidad = null;
+            objeto = null;
+            idEntidad = null;
+            idObjeto = null;
             this.x = x;
             this.y = y;
         }

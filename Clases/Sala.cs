@@ -66,7 +66,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 
                 if (celdas[rx + x, ry + y] is Suelo)
                 {
-                    Partida.protagonista.Spawn(rx + x, ry + y);
+                    Partida.protagonista.Spawn(-1, rx + x, ry + y);
+                    celdas[rx + x, ry + y].ocupada = true;
                 }
             }
 
@@ -92,8 +93,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     ry = rng.Next(alto);
                     if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
                     {
-                        this.enemigos[i].Spawn(rx, ry);
+                        this.enemigos[i].Spawn(i, rx, ry);
                         celdas[rx, ry].ocupada = true;
+                        celdas[rx, ry].idEntidad = i;
+                        celdas[rx, ry].entidad = this.enemigos[i].GetType();
                     }
                 }
             }
@@ -107,8 +110,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     ry = rng.Next(alto);
                     if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
                     {
-                        tienda.Spawn(rx, ry);
+                        tienda.Spawn(-1, rx, ry);
                         celdas[rx, ry].ocupada = true;
+                        celdas[rx, ry].idEntidad = -1;
+                        celdas[rx, ry].entidad = tienda.GetType();
                     }
                 }
             }
@@ -128,8 +133,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 ry = rng.Next(alto);
                 if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
                 {
-                    pnj.Spawn(rx, ry);
+                    pnj.Spawn(-1, rx, ry);
                     celdas[rx, ry].ocupada = true;
+                    celdas[rx, ry].idEntidad = -1;
+                    celdas[rx, ry].entidad = pnj.GetType();
                 }
             }
 
@@ -210,7 +217,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     ry = rng.Next(alto);
                     if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
                     {
-                        this.objetos[i].Spawn(rx, ry);
+                        this.objetos[i].Spawn(i, rx, ry);
+                        celdas[rx, ry].idObjeto = i;
+                        celdas[rx, ry].objeto = this.objetos[i].GetType();
                     }
                 }
             }
@@ -244,7 +253,17 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         void DibujaEntidadMovil(Entidad personaje)
         {
-            GetCelda(personaje.preX, personaje.preY).Dibuja();
+            // Si hay un objeto en la celda abandonada, lo dibuja, de lo contrario dibuja la celda
+            // A continuación, dibuja el personaje en su posición actual
+            if (celdas[personaje.preX, personaje.preY].idObjeto >= 0)
+            {
+                objetos[celdas[personaje.preX, personaje.preY].idObjeto.Value].Dibuja();
+            }
+            else
+            {
+                celdas[personaje.preX, personaje.preY].Dibuja();
+            }
+
             personaje.Dibuja();
         }
         public Entidad CompruebaEntidad(int x, int y)
@@ -284,7 +303,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
 
         // Terrenos
-        bool CeldaAislada(int x, int y)
+        private bool CeldaAislada(int x, int y)
         {
             // Si todas las celdas que rodean a la que entra por parámetros son suelo, devuelve TRUE
             // Si alguna NO es suelo, devuelve false
@@ -310,7 +329,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 !celdas[x + 1, y + 1].ocupada
                 );
         }
-        void CreaTerrenos(int terrenos)
+        private void CreaTerrenos(int terrenos)
         {
             // Primero genera una entrada
             // En celdas aleatorias, si es suelo la cambia a:
