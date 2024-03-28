@@ -29,19 +29,19 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             this.nivel = nivel;
             ancho = 96;
             alto = 27;
-            terrenos = nivel * 3;
             tienda = new Tienda();
             pnj = new PNJ();
+            terrenos = nivel * 3;
             enemigos = new List<Entidad>();
             objetos = new List<Objeto>();
             celdas = new Celda[ancho, alto];
             GeneraSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
             CreaTerrenos((int)Math.Truncate(nivel * 2.3));
-            Spawns((int)Math.Truncate(nivel * 1.4), (int)Math.Truncate(nivel * 0.5));
+            GeneraEntidades((int)Math.Truncate(nivel * 1.4), (int)Math.Truncate(nivel * 0.5));
         }
 
         // Objetos y entidades
-        void Spawns(int enemigos, int objetos)
+        void GeneraEntidades(int enemigos, int objetos)
         {
             int rx = 0;
             int ry = 0;
@@ -102,20 +102,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             }
 
             // Tienda
+
             if (nivel - 1 % 3 == 0)
             {
-                while (!tienda.spawneado)
-                {
-                    rx = rng.Next(ancho);
-                    ry = rng.Next(alto);
-                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
-                    {
-                        tienda.Spawn(-1, rx, ry);
-                        celdas[rx, ry].ocupada = true;
-                        celdas[rx, ry].idEntidad = -1;
-                        celdas[rx, ry].entidad = tienda.GetType();
-                    }
-                }
+                tienda = new Tienda();
             }
 
             // PNJ
@@ -126,18 +116,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             else if (nivel % 2 == 0)
             {
                 pnj = new PNJ();
-            }
-            while (!pnj.spawneado)
-            {
-                rx = rng.Next(ancho);
-                ry = rng.Next(alto);
-                if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
-                {
-                    pnj.Spawn(-1, rx, ry);
-                    celdas[rx, ry].ocupada = true;
-                    celdas[rx, ry].idEntidad = -1;
-                    celdas[rx, ry].entidad = pnj.GetType();
-                }
             }
 
             // Objetos
@@ -208,6 +186,79 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     }
                 }
             }
+        }
+        public void SpawnEntidades()
+        {
+            int rx = 0;
+            int ry = 0;
+
+            // Protagonista
+
+            while (!Partida.protagonista.spawneado)
+            {
+                int x = rng.Next(2);
+                int y = rng.Next(2);
+
+                if (celdas[rx + x, ry + y] is Suelo)
+                {
+                    Partida.protagonista.Spawn(-1, rx + x, ry + y);
+                    celdas[rx + x, ry + y].ocupada = true;
+                }
+            }
+
+            // Enemigos
+
+            for (int i = 0; i < this.enemigos.Count; i++)
+            {
+                while (!this.enemigos[i].spawneado)
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
+                    {
+                        this.enemigos[i].Spawn(i, rx, ry);
+                        celdas[rx, ry].ocupada = true;
+                        celdas[rx, ry].idEntidad = i;
+                        celdas[rx, ry].entidad = this.enemigos[i].GetType();
+                    }
+                }
+            }
+
+            // Tienda
+            if (nivel - 1 % 3 == 0)
+            {
+                while (!tienda.spawneado)
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
+                    {
+                        tienda.Spawn(-1, rx, ry);
+                        celdas[rx, ry].ocupada = true;
+                        celdas[rx, ry].idEntidad = -1;
+                        celdas[rx, ry].entidad = tienda.GetType();
+                    }
+                }
+            }
+
+            // PNJ
+            if (nivel % 2 == 0)
+            {
+                while (!pnj.spawneado)
+                {
+                    rx = rng.Next(ancho);
+                    ry = rng.Next(alto);
+                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada && CeldaAislada(rx, ry))
+                    {
+                        pnj.Spawn(-1, rx, ry);
+                        celdas[rx, ry].ocupada = true;
+                        celdas[rx, ry].idEntidad = -1;
+                        celdas[rx, ry].entidad = pnj.GetType();
+                    }
+                }
+            }
+
+            // Objetos
 
             for (int i = 0; i < this.objetos.Count; i++)
             {
@@ -408,7 +459,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 
             do
             {
-                if (x >= (ancho - 1) || y >= (alto - 1) || x <= 0 || y <= 0)
+                if (x >= (ancho - 1) || y >= (alto - 2) || x <= 0 || y <= 0)
                 {
                     x = ancho / 2;
                     y = alto / 2;

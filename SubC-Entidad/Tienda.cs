@@ -17,7 +17,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             y = 0;
             preX = x;
             preY = y;
-            spawneado = false;
             salaActual = 0;
             direccion = Direccion.derecha;
             profesion = Profesion.Tienda;
@@ -36,12 +35,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Write("$");
         }
-        public void habla() { }
-        public void bienvenida() { }
-        public void abreVenta() { }
-        public void abreCompra() { }
-        public void vende() { }
-        public void compra() { }
-        public void contraataca() { }
+        public void Bienvenida() { }
+        public void AbreVenta() { }
+        public void AbreCompra() { }
+        public void Vende() { }
+        public void Compra() { }
+        public void Contraataca() { }
     }
 }

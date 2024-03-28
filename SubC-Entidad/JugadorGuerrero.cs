@@ -57,16 +57,18 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 if (salaActual > 0)
                 {
                     salaActual--;
+                    spawneado = false;
                     Mapa.SalaAnterior();
                 }
                 else
                 {
-                    Interfaz.Escribe(nombre, "Si me rajo ahora seré el hazmerreír del pueblo");
+                    Interfaz.Escribe(nombre, "\"Si me rajo ahora seré el hazmerreír del pueblo\".");
                 }
             }
             if (puerta is Salida)
             {
                 salaActual++;
+                spawneado = false;
                 Mapa.SiguienteSala();
             }
         }
