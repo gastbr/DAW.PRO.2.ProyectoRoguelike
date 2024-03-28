@@ -24,6 +24,7 @@
         public List<Objeto> inventario;
         public Objeto arma;
         public Objeto armadura;
+        public string frase;
         public abstract void Dibuja();
         public void Spawn(int id, int x, int y)
         {
@@ -60,24 +61,8 @@
             }
 
         }
-        public void Explora()
+        public virtual void Examina()
         {
-
-            switch (direccion)
-            {
-                case Direccion.arriba:
-                    Mapa.GetSala(salaActual).CompruebaEntidad(x, y - 1);
-                    break;
-                case Direccion.abajo:
-                    Mapa.GetSala(salaActual).CompruebaEntidad(x, y + 1);
-                    break;
-                case Direccion.izquierda:
-                    Mapa.GetSala(salaActual).CompruebaEntidad(x - 1, y);
-                    break;
-                case Direccion.derecha:
-                    Mapa.GetSala(salaActual).CompruebaEntidad(x + 1, y);
-                    break;
-            }
         }
         public Entidad ExaminaEntidad()
         {
@@ -102,20 +87,54 @@
         public Objeto ExaminaObjeto()
         {
             Objeto hallado = null;
-            switch (direccion)
+            if (Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y) is not null)
             {
-                case Direccion.arriba:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y - 1);
-                    break;
-                case Direccion.abajo:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y + 1);
-                    break;
-                case Direccion.derecha:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x + 1, y);
-                    break;
-                case Direccion.izquierda:
-                    hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x - 1, y);
-                    break;
+                hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y);
+            }
+            else
+            {
+                switch (direccion)
+                {
+                    case Direccion.arriba:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y - 1);
+                        break;
+                    case Direccion.abajo:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x, y + 1);
+                        break;
+                    case Direccion.derecha:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x + 1, y);
+                        break;
+                    case Direccion.izquierda:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).CompruebaObjeto(x - 1, y);
+                        break;
+                }
+            }
+            return hallado;
+        }
+        public Celda ExaminaCelda()
+        {
+            Celda hallado = null;
+            if (Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y) is not SubC_Celda.Suelo)
+            {
+                hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y);
+            }
+            else
+            {
+                switch (direccion)
+                {
+                    case Direccion.arriba:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y - 1);
+                        break;
+                    case Direccion.abajo:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x, y + 1);
+                        break;
+                    case Direccion.derecha:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x + 1, y);
+                        break;
+                    case Direccion.izquierda:
+                        hallado = Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(x - 1, y);
+                        break;
+                }
             }
             return hallado;
         }
@@ -157,7 +176,6 @@
                 Thread.Sleep(50);
             }
         }
-
         public void Muere()
         {
             for (int i = 0; i < 5; i++)
@@ -171,6 +189,14 @@
             }
             Console.WriteLine("Game Over");
             Thread.Sleep(200);
+        }
+        public virtual void Habla()
+        {
+            Interfaz.Escribe(nombre, frase);
+        }
+        public virtual void Habla(string frase)
+        {
+            Interfaz.Escribe(nombre, frase);
         }
     }
 }

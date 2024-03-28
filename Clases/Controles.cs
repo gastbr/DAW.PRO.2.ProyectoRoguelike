@@ -9,10 +9,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static ConsoleKey TAbajo = ConsoleKey.DownArrow;
         static ConsoleKey TDerecha = ConsoleKey.RightArrow;
         static ConsoleKey TIzquierda = ConsoleKey.LeftArrow;
-        static ConsoleKey TExaminar = ConsoleKey.C;
+        static ConsoleKey TExaminar = ConsoleKey.W;
         static ConsoleKey TAtaque = ConsoleKey.Spacebar;
-        static ConsoleKey THabilidad = ConsoleKey.X;
-        static ConsoleKey TInventario = ConsoleKey.Z;
+        static ConsoleKey THabilidad = ConsoleKey.C;
+        static ConsoleKey TInventario = ConsoleKey.Q;
         static ConsoleKey TMenu = ConsoleKey.Escape;
 
         public static void DetectaTecla()
@@ -88,7 +88,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         static void Examina()
         {
-
+            Partida.protagonista.Examina();
         }
         static void Ataca()
         {

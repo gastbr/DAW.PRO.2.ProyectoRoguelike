@@ -10,7 +10,7 @@ internal class Program
         while (true)
         {
             Interfaz.DibujaHUD();
-            Mapa.GetSala(0).DibujaEntidades();
+            Mapa.GetSala(Partida.protagonista.salaActual).DibujaEntidades();
             Controles.DetectaTecla();
         }
     }

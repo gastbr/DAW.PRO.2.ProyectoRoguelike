@@ -308,6 +308,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             // Si todas las celdas que rodean a la que entra por parámetros son suelo, devuelve TRUE
             // Si alguna NO es suelo, devuelve false
             // También comprueba si están todas sin ocupar
+
             return
                 (
                 celdas[x - 1, y - 1] is Suelo &&

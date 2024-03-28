@@ -38,7 +38,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         }
         void habla()
         {
-            Interfaz.DibujaInfo(frase);
+            Interfaz.Escribe(nombre, frase);
         }
     }
 }

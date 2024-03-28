@@ -9,7 +9,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Interfaz
     {
-        static string info = "HOMBRE SOSPECHOSO CON LA BRAGUETA BAJADA:\n\"Tráeme el mono de jade antes de que cambie la luna o te parto las piernas.\"";
+        static string nombrePersonaje = "";
+        static string frasePersonaje = "";
         static int posX = 97;
         static int posY = 0;
         public static void DibujaHUD()
@@ -54,100 +55,73 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.Write("  /  " + Partida.protagonista.vidaMax);
 
 
+            //Console.ForegroundColor = ConsoleColor.Gray;
+            //Console.SetCursorPosition(posX, posY + 15);
+            //Console.Write("Pos: ".PadRight(9) + $"{Partida.protagonista.x}".PadLeft(3) + " / " + $"{Partida.protagonista.y}".PadLeft(3));
+            //Console.SetCursorPosition(posX, posY + 16);
+            //Console.Write("Pre: ".PadRight(9) + $"{Partida.protagonista.preX}".PadLeft(3) + " / " + $"{Partida.protagonista.preY}".PadLeft(3));
+            //Console.SetCursorPosition(posX, posY + 17);
+            //Console.Write("Terreno:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
+            //Console.SetCursorPosition(posX, posY + 18);
+            //Console.Write("Ves:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
+
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetCursorPosition(posX, posY + 15);
-            Console.Write("Pos: ".PadRight(9) + $"{Partida.protagonista.x}".PadLeft(3) + " / " + $"{Partida.protagonista.y}".PadLeft(3));
-            Console.SetCursorPosition(posX, posY + 16);
-            Console.Write("Pre: ".PadRight(9) + $"{Partida.protagonista.preX}".PadLeft(3) + " / " + $"{Partida.protagonista.preY}".PadLeft(3));
-            Console.SetCursorPosition(posX, posY + 17);
-            Console.Write("Terreno:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
-            Console.SetCursorPosition(posX, posY + 18);
-            Console.Write("Ves:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
-
-            /*
-            Console.SetCursorPosition(posX, posY + 11);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write('@');
-            Console.Write(" - ");
-            Console.Write("Protagonista");
-
-            Console.SetCursorPosition(posX, posY + 12);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write('Ï');
-            Console.Write(" - ");
-            Console.Write("Enemigos");
-                        
-            Console.SetCursorPosition(posX, posY + 13);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write('ï');
-            Console.Write(" - ");
-            Console.Write("PNJ");
-                        
-            Console.SetCursorPosition(posX, posY + 14);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write('?');
-            Console.Write(" - ");
-            Console.Write("Objetos");
-                        
-            Console.SetCursorPosition(posX, posY + 15);
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write('~');
-            Console.Write(" - ");
-            Console.Write("Agua");
-                        
-            Console.SetCursorPosition(posX, posY + 16);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write('~');
-            Console.Write(" - ");
-            Console.Write("Lava");
-                        
-            Console.SetCursorPosition(posX, posY + 17);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write('֍');
-            Console.Write(" - ");
-            Console.Write("Trampa");
-                        
-            Console.SetCursorPosition(posX, posY + 18);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write('<');
-            Console.Write(" - ");
-            Console.Write("Entrada");
-                        
-            Console.SetCursorPosition(posX, posY + 19);
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write('>');
-            Console.Write(" - ");
-            Console.Write("Salida");*/
-
-            //////////////////////////
-
-            Console.SetCursorPosition(posX, posY + 22);
+            Console.SetCursorPosition(posX, posY + 20);
             Console.Write("CONTROLES:");
-            Console.SetCursorPosition(posX, posY + 23);
+            Console.SetCursorPosition(posX, posY + 21);
             Console.Write("Flechas:".PadRight(9) + "MOVER".PadLeft(9));
+            Console.SetCursorPosition(posX, posY + 22);
+            Console.Write("Espacio:".PadRight(9) + "ATACAR".PadLeft(9));
+            Console.SetCursorPosition(posX, posY + 23);
+            Console.Write("C:".PadRight(9) + "ESPECIAL".PadLeft(9));
             Console.SetCursorPosition(posX, posY + 24);
-            Console.Write("Shift:".PadRight(9) + "EXAMINAR".PadLeft(9));
+            Console.Write("W:".PadRight(9) + "EXAMINAR".PadLeft(9));
             Console.SetCursorPosition(posX, posY + 25);
-            Console.Write("Enter:".PadRight(9) + "OBJETOS".PadLeft(9));
+            Console.Write("Q:".PadRight(9) + "OBJETOS".PadLeft(9));
             Console.SetCursorPosition(posX, posY + 26);
-            Console.Write("Esc:".PadRight(9) + "OPCIONES".PadLeft(9));
+            Console.Write("Esc:".PadRight(9) + "PAUSA".PadLeft(9));
         }
-        static public void DibujaInfo(string texto)
+        static public void Escribe(string nombre, string frase)
         {
-            info = texto.PadRight(360).Substring(0, 360);
-            Console.SetCursorPosition(0, 27);
+            // Los strings se recortan para que tengan un máximo de 120 caracteres (una línea de ancho de la consola) o 240 caracteres (dos líneas)
+
+            nombrePersonaje = nombre.Substring(0, Math.Min(nombre.Length, 120));
+            frasePersonaje = frase.Substring(0, Math.Min(frase.Length, 240));
+
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            for (int i = 0; i < info.Length; i++)
+            Console.SetCursorPosition(0, 27);
+
+            for (int i = 0; i < nombrePersonaje.Length; i++)
             {
-                Console.Write(info[i]);
+                Console.Write(nombrePersonaje[i]);
                 Thread.Sleep(20);
             }
-            Console.ReadLine();
-            for (int i = 0; i < info.Length; i++)
+            Console.Write(":");
+            Console.WriteLine();
+            Console.Write('\"');
+            for (int i = 0; i < frasePersonaje.Length; i++)
+            {
+                Console.Write(frasePersonaje[i]);
+                Thread.Sleep(20);
+            }
+            Console.Write("\".");
+
+
+            // BORRA LO ESCRITO TRAS PULSAR UNA TECLA
+            Console.SetCursorPosition(0, 27);
+            Console.ReadKey(true);
+            for (int i = 0; i < nombrePersonaje.Length; i++)
             {
                 Console.Write(" ");
             }
-            info = "";
+            Console.WriteLine(" ");
+            for (int i = 0; i < frasePersonaje.Length + 3; i++)
+            {
+                Console.Write(' ');
+            }
+
+            frasePersonaje = "";
+            nombrePersonaje = "";
         }
 
     }
