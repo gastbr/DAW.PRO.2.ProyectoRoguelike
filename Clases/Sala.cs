@@ -38,38 +38,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             GeneraSala(rng.Next(alto * ancho / 10, alto * ancho / 2));
             CreaTerrenos((int)Math.Truncate(nivel * 2.3));
             GeneraEntidades((int)Math.Truncate(nivel * 1.4), (int)Math.Truncate(nivel * 0.5));
+            SpawnEntidades();
         }
 
         // Objetos y entidades
         void GeneraEntidades(int enemigos, int objetos)
         {
-            int rx = 0;
-            int ry = 0;
-
-            // Protagonista
-            for (int i = 0; i < alto; i++)
-            {
-                for (int j = 0; j < ancho; j++)
-                {
-                    if (celdas[j, i] is Entrada)
-                    {
-                        rx = j;
-                        ry = i;
-                    }
-                }
-            }
-
-            while (!Partida.protagonista.spawneado)
-            {
-                int x = rng.Next(2);
-                int y = rng.Next(2);
-
-                if (celdas[rx + x, ry + y] is Suelo)
-                {
-                    Partida.protagonista.Spawn(-1, rx + x, ry + y);
-                    celdas[rx + x, ry + y].ocupada = true;
-                }
-            }
+            int rx;
+            int ry;
 
             // Enemigos
             for (int i = 0; i < enemigos; i++)
@@ -82,22 +58,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     case 1:
                         this.enemigos.Add(new EnemigoMago());
                         break;
-                }
-            }
-
-            for (int i = 0; i < this.enemigos.Count; i++)
-            {
-                while (!this.enemigos[i].spawneado)
-                {
-                    rx = rng.Next(ancho);
-                    ry = rng.Next(alto);
-                    if (celdas[rx, ry] is Suelo && !celdas[rx, ry].ocupada)
-                    {
-                        this.enemigos[i].Spawn(i, rx, ry);
-                        celdas[rx, ry].ocupada = true;
-                        celdas[rx, ry].idEntidad = i;
-                        celdas[rx, ry].entidad = this.enemigos[i].GetType();
-                    }
                 }
             }
 
@@ -189,21 +149,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public void SpawnEntidades()
         {
-            int rx = 0;
-            int ry = 0;
+            int rx;
+            int ry;
 
             // Protagonista
 
             while (!Partida.protagonista.spawneado)
             {
-                int x = rng.Next(2);
-                int y = rng.Next(2);
+                Partida.protagonista.Spawn(-1, BuscaEntrada().x, BuscaEntrada().y);
+                celdas[BuscaEntrada().x, BuscaEntrada().y].ocupada = true;
 
-                if (celdas[rx + x, ry + y] is Suelo)
-                {
-                    Partida.protagonista.Spawn(-1, rx + x, ry + y);
-                    celdas[rx + x, ry + y].ocupada = true;
-                }
             }
 
             // Enemigos
@@ -320,21 +275,26 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         public Entidad CompruebaEntidad(int x, int y)
         {
             Entidad hallado = null;
-            for (int i = 0; i < enemigos.Count; i++)
+            // El for empieza en -2 para que cuente la tienda y el pnj, que siempre están construidos
+
+            if (celdas[x, y].ocupada)
             {
-                if (celdas[x, y].ocupada)
+                if (tienda.x == x && tienda.y == y)
                 {
-                    if (enemigos[i].x == x && enemigos[i].y == y)
+                    hallado = tienda;
+                }
+                else if (pnj.x == x && pnj.y == y)
+                {
+                    hallado = pnj;
+                }
+                else if (enemigos.Count > 0)
+                {
+                    for (int i = 0; i < enemigos.Count; i++)
                     {
-                        hallado = enemigos[i];
-                    }
-                    else if (pnj.x == x && pnj.y == y)
-                    {
-                        hallado = pnj;
-                    }
-                    else if (tienda.x == x && tienda.y == y)
-                    {
-                        hallado = tienda;
+                        if (enemigos[i].x == x && enemigos[i].y == y)
+                        {
+                            hallado = enemigos[i];
+                        }
                     }
                 }
             }
@@ -426,6 +386,36 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
 
         // Mapa
+        public Entrada BuscaEntrada()
+        {
+            Entrada? hallado = null;
+            for (int i = 0; i < ancho; i++)
+            {
+                for (int j = 0; j < alto; j++)
+                {
+                    if (celdas[i, j] is Entrada)
+                    {
+                        hallado = (Entrada)celdas[i, j];
+                    }
+                }
+            }
+            return hallado;
+        }
+        public Salida BuscaSalida()
+        {
+            Salida? hallado = null;
+            for (int i = 0; i < ancho; i++)
+            {
+                for (int j = 0; j < alto; j++)
+                {
+                    if (celdas[i, j] is Salida)
+                    {
+                        hallado = (Salida)celdas[i, j];
+                    }
+                }
+            }
+            return hallado;
+        }
         public void DibujaSala()
         {
             int posX = 0;
@@ -459,7 +449,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 
             do
             {
-                if (x >= (ancho - 1) || y >= (alto - 2) || x <= 0 || y <= 0)
+                if (x >= (ancho - 2) || y >= (alto - 2) || x <= 1 || y <= 1)
                 {
                     x = ancho / 2;
                     y = alto / 2;

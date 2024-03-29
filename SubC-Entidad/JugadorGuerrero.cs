@@ -59,6 +59,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                     salaActual--;
                     spawneado = false;
                     Mapa.SalaAnterior();
+                    spawneado = true;
                 }
                 else
                 {
@@ -70,6 +71,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 salaActual++;
                 spawneado = false;
                 Mapa.SiguienteSala();
+                spawneado = true;
             }
         }
         public override void Examina()
@@ -91,16 +93,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 switch (ExaminaCelda())
                 {
                     case Agua:
-                        Habla("Un pequeño charco de agua. Dicen que las aguas de estas tierras son curativas");
+                        Habla("\"Un pequeño charco de agua. Dicen que las aguas de estas tierras son curativas\".");
                         break;
                     case Lava:
-                        Habla("Lava. Como agua, pero muy caliente y burbujeante. Mejor no acercarse");
+                        Habla("\"Lava. Como agua, pero muy caliente y burbujeante. Mejor no acercarse\".");
                         break;
                     case Muro:
-                        Habla("Un muro. No es bonito, pero cumple su función. Quién sabe qué clase de errores ocurrirían si no existieran y yo pisara fuera de este mapa");
+                        Habla("\"Un muro. No es bonito, pero cumple su función. Quién sabe qué clase de errores ocurrirían si no existieran y yo pisara fuera de este mapa\".");
                         break;
                     case Trampa:
-                        Habla("Parece una trampa para osos");
+                        Habla("\"Parece una trampa para osos\".");
                         break;
                 }
             }

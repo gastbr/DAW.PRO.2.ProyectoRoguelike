@@ -4,16 +4,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
 {
     internal static class Controles
     {
-        static ConsoleKey TPulsada;
-        static ConsoleKey TArriba = ConsoleKey.UpArrow;
-        static ConsoleKey TAbajo = ConsoleKey.DownArrow;
-        static ConsoleKey TDerecha = ConsoleKey.RightArrow;
-        static ConsoleKey TIzquierda = ConsoleKey.LeftArrow;
-        static ConsoleKey TExaminar = ConsoleKey.E;
-        static ConsoleKey TAtaque = ConsoleKey.Spacebar;
-        static ConsoleKey THabilidad = ConsoleKey.C;
-        static ConsoleKey TInventario = ConsoleKey.Q;
-        static ConsoleKey TMenu = ConsoleKey.Escape;
+        static ConsoleKey tPulsada;
+        static ConsoleKey tArriba = ConsoleKey.UpArrow;
+        static ConsoleKey tAbajo = ConsoleKey.DownArrow;
+        static ConsoleKey tDerecha = ConsoleKey.RightArrow;
+        static ConsoleKey tIzquierda = ConsoleKey.LeftArrow;
+        static ConsoleKey tExaminar = ConsoleKey.E;
+        static ConsoleKey tAtaque = ConsoleKey.Spacebar;
+        static ConsoleKey tHabilidad = ConsoleKey.C;
+        static ConsoleKey tInventario = ConsoleKey.Q;
+        static ConsoleKey tMenu = ConsoleKey.Escape;
 
         public static void DetectaTecla()
         {
@@ -22,66 +22,66 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Console.ReadKey(true);
             }
 
-            TPulsada = Console.ReadKey(true).Key;
+            tPulsada = Console.ReadKey(true).Key;
 
-            if (TPulsada == TExaminar)
+            if (tPulsada == tExaminar)
             {
                 Examina();
             }
-            else if (TPulsada == TAtaque)
+            else if (tPulsada == tAtaque)
             {
                 Ataca();
             }
-            else if (TPulsada == THabilidad)
+            else if (tPulsada == tHabilidad)
             {
                 Habilidad();
             }
-            else if (TPulsada == TInventario)
+            else if (tPulsada == tInventario)
             {
                 AbreInventario();
             }
-            else if (TPulsada == TMenu)
+            else if (tPulsada == tMenu)
             {
                 AbreMenu();
             }
-            else if (TPulsada == ConsoleKey.M)
+            else if (tPulsada == ConsoleKey.M)
             {
                 Partida.protagonista.Muere();
             }
-            else if (TPulsada == ConsoleKey.N)
+            else if (tPulsada == ConsoleKey.N)
             {
                 Partida.protagonista.RecibeCura(2);
             }
-            else if (TPulsada == ConsoleKey.B)
+            else if (tPulsada == ConsoleKey.B)
             {
                 Partida.protagonista.RecibeDanio(2);
             }
-            else if (TPulsada == ConsoleKey.V)
+            else if (tPulsada == ConsoleKey.V)
             {
                 Partida.NuevaPartida("prrrrro", Entidad.Profesion.Mago);
                 Mapa.GetSala(0).DibujaSala();
             }
 
-            Mueve(TPulsada);
+            Mueve(tPulsada);
         }
         static void Mueve(ConsoleKey tecla)
         {
             // No se puede usar un SWITCH porque el SWITCH no acepta variables como casos.
             // El switch se comprueba de forma estática o algo de eso, el IF en cambio no (dinámico).
 
-            if (tecla == TArriba || tecla == ConsoleKey.W)
+            if (tecla == tArriba || tecla == ConsoleKey.W)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.arriba);
             }
-            else if (tecla == TAbajo || tecla == ConsoleKey.S)
+            else if (tecla == tAbajo || tecla == ConsoleKey.S)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.abajo);
             }
-            else if (tecla == TDerecha || tecla == ConsoleKey.D)
+            else if (tecla == tDerecha || tecla == ConsoleKey.D)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.derecha);
             }
-            else if (tecla == TIzquierda || tecla == ConsoleKey.A)
+            else if (tecla == tIzquierda || tecla == ConsoleKey.A)
             {
                 Partida.protagonista.Camina(Entidad.Direccion.izquierda);
             }

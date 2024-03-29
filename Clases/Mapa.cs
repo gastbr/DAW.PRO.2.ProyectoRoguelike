@@ -29,10 +29,14 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 AddSala();
             }
             salas[Partida.protagonista.salaActual].DibujaSala();
+            Partida.protagonista.x = salas[Partida.protagonista.salaActual].BuscaEntrada().x;
+            Partida.protagonista.y = salas[Partida.protagonista.salaActual].BuscaEntrada().y;
         }
         static public void SalaAnterior()
         {
             salas[Partida.protagonista.salaActual].DibujaSala();
+            Partida.protagonista.x = salas[Partida.protagonista.salaActual].BuscaSalida().x;
+            Partida.protagonista.y = salas[Partida.protagonista.salaActual].BuscaSalida().y;
         }
         static public void BorrarMapa()
         {

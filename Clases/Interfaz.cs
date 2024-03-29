@@ -65,10 +65,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             //Console.SetCursorPosition(posX, posY + 18);
             //Console.Write("Ves:".PadRight(9) + $"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".Substring($"{Mapa.GetSala(Partida.protagonista.salaActual).GetCelda(Partida.protagonista.x, Partida.protagonista.y).GetType()}".LastIndexOf('.') + 1).PadLeft(9));
 
-            Console.SetCursorPosition(posX, posY + 11);
-            Console.Write("Ves:".PadRight(9) + $"{Partida.protagonista.Ve()}".PadLeft(10));
-
-
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetCursorPosition(posX, posY + 20);
             Console.Write("CONTROLES:");
@@ -84,11 +80,13 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.Write("Q:".PadRight(9) + "OBJETOS".PadLeft(10));
             Console.SetCursorPosition(posX, posY + 26);
             Console.Write("Esc:".PadRight(9) + "PAUSA".PadLeft(10));
+
+            Vision();
         }
         static public void Escribe(string nombre, string frase)
         {
             // Los strings se recortan para que tengan un máximo de 120 caracteres (una línea de ancho de la consola) o 240 caracteres (dos líneas)
-
+            BorraInfo(360);
             nombrePersonaje = nombre.Substring(0, Math.Min(nombre.Length, 120));
             frasePersonaje = frase.Substring(0, Math.Min(frase.Length, 240));
 
@@ -105,25 +103,27 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             for (int i = 0; i < frasePersonaje.Length; i++)
             {
                 Console.Write(frasePersonaje[i]);
-                Thread.Sleep(20);
+                Thread.Sleep(15);
             }
-
-            // BORRA LO ESCRITO TRAS PULSAR UNA TECLA
-            Console.SetCursorPosition(0, 27);
             Console.ReadKey(true);
-            for (int i = 0; i < nombrePersonaje.Length; i++)
-            {
-                Console.Write(" ");
-            }
-            Console.WriteLine(" ");
-            for (int i = 0; i < frasePersonaje.Length + 1; i++)
-            {
-                Console.Write(' ');
-            }
-
+            BorraInfo(360);
             frasePersonaje = "";
             nombrePersonaje = "";
         }
-
+        static void Vision()
+        {
+            Console.SetCursorPosition(0, 27);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Ves:");
+            Console.WriteLine(Partida.protagonista.Ve().PadRight(40));
+        }
+        static void BorraInfo(int longitud)
+        {
+            Console.SetCursorPosition(0, 27);
+            for (int i = 0; i < longitud; i++)
+            {
+                Console.Write(" ");
+            }
+        }
     }
 }
