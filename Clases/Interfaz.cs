@@ -125,5 +125,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Console.Write(" ");
             }
         }
+        public static void LimpiaPantalla()
+        {
+            for (int i = 0; i < Console.WindowWidth; i++)
+            {
+                for (int j = 0; j < Console.WindowHeight; j++)
+                {
+                    Console.SetCursorPosition(i, j);
+                    Console.Write(" ");
+                }
+            }
+        }
     }
 }

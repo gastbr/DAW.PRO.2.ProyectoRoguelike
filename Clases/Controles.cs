@@ -15,14 +15,122 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static ConsoleKey tInventario = ConsoleKey.Q;
         static ConsoleKey tMenu = ConsoleKey.Escape;
 
-        public static void DetectaTecla()
+        public static void DetectaTeclaPortada(int xMenu, int yMenu)
         {
-            while (Console.KeyAvailable)
+            Cursor cursor = new Cursor(xMenu - 3, yMenu, 4);
+
+            cursor.Dibuja();
+
+            while (Partida.estado == Partida.Estado.Portada)
             {
-                Console.ReadKey(true);
+                LimpiaBufferTecla();
+                tPulsada = Console.ReadKey(true).Key;
+
+                if (tPulsada == ConsoleKey.Enter || tPulsada == ConsoleKey.Spacebar || tPulsada == ConsoleKey.E || tPulsada == ConsoleKey.RightArrow)
+                {
+                    if (cursor.y == yMenu)
+                    {
+                        EligePersonaje(xMenu, yMenu);
+                    }
+                    else if (cursor.y == yMenu + 1)
+                    {
+                        Partida.CargaPartida();
+                    }
+                    else if (cursor.y == yMenu + 2)
+                    {
+                        Partida.DibujaPortada();
+                    }
+                    else if (cursor.y == yMenu + 3)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+                else if (tPulsada == tAbajo)
+                {
+                    cursor.Mueve(Entidad.Direccion.abajo);
+                }
+                else if (tPulsada == tArriba)
+                {
+                    cursor.Mueve(Entidad.Direccion.arriba);
+                }
             }
 
+        }
+        static void EligePersonaje(int xMenu, int yMenu)
+        {
+            Cursor cursor = new Cursor(xMenu - 3, yMenu + 1, 2);
+            string nombre = "";
+
+            Console.SetCursorPosition(xMenu, yMenu);
+            Console.WriteLine("              ");
+            Console.SetCursorPosition(xMenu, yMenu + 1);
+            Console.WriteLine("              ");
+
+            Console.SetCursorPosition(xMenu - 3, yMenu);
+            Console.WriteLine("  ");
+            Console.SetCursorPosition(xMenu, yMenu);
+            Console.WriteLine("ELIGE PROFESIÓN:");
+            Console.SetCursorPosition(xMenu, yMenu + 1);
+            Console.WriteLine("Guerrero".PadRight(20));
+            Console.SetCursorPosition(xMenu, yMenu + 2);
+            Console.WriteLine("Mago".PadRight(20));
+
+            cursor.Dibuja();
+
+            while (Partida.estado == Partida.Estado.Portada)
+            {
+                LimpiaBufferTecla();
+                tPulsada = Console.ReadKey(true).Key;
+
+                if (tPulsada == ConsoleKey.Enter || tPulsada == ConsoleKey.Spacebar || tPulsada == ConsoleKey.E || tPulsada == ConsoleKey.RightArrow)
+                {
+                    if (cursor.y == yMenu + 1)
+                    {
+                        Console.SetCursorPosition(xMenu, yMenu);
+                        Console.WriteLine("Introduce tu nombre:");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.WriteLine("        ");
+                        Console.SetCursorPosition(xMenu, yMenu + 2);
+                        Console.WriteLine("    ");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.CursorVisible = true;
+                        nombre = Console.ReadLine();
+                        Partida.NuevaPartida(nombre, Entidad.Profesion.Guerrero);
+                    }
+                    else if (cursor.y == yMenu + 2)
+                    {
+                        Console.SetCursorPosition(xMenu, yMenu);
+                        Console.WriteLine("Introduce tu nombre:");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.WriteLine("        ");
+                        Console.SetCursorPosition(xMenu, yMenu + 2);
+                        Console.WriteLine("    ");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.CursorVisible = true;
+                        nombre = Console.ReadLine();
+                        Partida.NuevaPartida(nombre, Entidad.Profesion.Mago);
+                    }
+                }
+                else if (tPulsada == tAbajo)
+                {
+                    cursor.Mueve(Entidad.Direccion.abajo);
+                }
+                else if (tPulsada == tArriba)
+                {
+                    cursor.Mueve(Entidad.Direccion.arriba);
+                }
+            }
+        }
+
+
+        public static void DetectaTeclaJuego()
+        {
+            LimpiaBufferTecla();
+
             tPulsada = Console.ReadKey(true).Key;
+
+            // No se puede usar un SWITCH porque el SWITCH no acepta variables como casos.
+            // El switch se comprueba de forma estática o algo de eso, el IF en cambio no (dinámico).
 
             if (tPulsada == tExaminar)
             {
@@ -61,8 +169,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Partida.NuevaPartida("prrrrro", Entidad.Profesion.Mago);
                 Mapa.GetSala(0).DibujaSala();
             }
-
             Mueve(tPulsada);
+
         }
         static void Mueve(ConsoleKey tecla)
         {
@@ -94,7 +202,19 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
         }
         static void AbreInventario() { }
-        static void AbreMenu() { }
+        static void AbreMenu()
+        {
+            Pausa pausa = new Pausa();
+            pausa.DibujaMenu();
+            
+        }
         static void Habilidad() { }
+        static void LimpiaBufferTecla()
+        {
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(true);
+            }
+        }
     }
 }
