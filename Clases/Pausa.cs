@@ -11,24 +11,40 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
     {
         int x;
         int y;
-        string[] opciones;
+        string[] textoOpciones;
         public Cursor cursor;
         public Pausa()
         {
-            x = (Console.WindowHeight / 2) - 2;
-            y = (Console.WindowWidth / 2) - 5;
-            opciones = ["Continuar", "Abrir inventario", "Guardar y salir", "Salir"];
-            cursor = new Cursor(x - 3, y, opciones.Length);
+            x = 54;
+            y = 12;
+            textoOpciones = ["Continuar", "Abrir inventario", "Guardar y salir", "Salir"];
+            cursor = new Cursor(x - 3, y, textoOpciones.Length);
         }
 
         public void DibujaMenu()
         {
             Partida.estado = Partida.Estado.Menu;
             Interfaz.LimpiaPantalla();
-            for (int i = 0; i < opciones.Length; i++)
+            for (int i = 0; i < textoOpciones.Length; i++)
             {
                 Console.SetCursorPosition(x, y + i);
-                Console.WriteLine(opciones[i]);
+                Console.WriteLine(textoOpciones[i]);
+            }
+
+            switch (Controles.DetectaTeclaMenu(cursor))
+            {
+                case 1:
+                    Continuar();
+                    break;
+                case 2:
+                    Inventario();
+                    break;
+                case 3:
+                    GuardarSalir();
+                    break;
+                case 4:
+                    Salir();
+                    break;
             }
         }
         public void Continuar()
@@ -37,24 +53,24 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public void Inventario()
         {
-            Interfaz.LimpiaPantalla();
-            Cursor cursor = new Cursor(x - 3, y, Partida.protagonista.inventario.Count);
-            Console.SetCursorPosition(x, y);
-            for (int i = 0; i < Partida.protagonista.inventario.Count; i++)
-            {
-                Console.SetCursorPosition(x, y + i);
-                Console.WriteLine(Partida.protagonista.inventario[i]);
-            }
-            
+            DibujaMenu();
+            //Interfaz.LimpiaPantalla();
+            //Cursor cursor = new Cursor(x - 3, y, Partida.protagonista.inventario.Count);
+            //Console.SetCursorPosition(x, y);
+            //for (int i = 0; i < Partida.protagonista.inventario.Count; i++)
+            //{
+            //    Console.SetCursorPosition(x, y + i);
+            //    Console.WriteLine(Partida.protagonista.inventario[i]);
+            //}
         }
         public void GuardarSalir()
         {
             Partida.GuardaPartida();
-            Partida.DibujaPortada();
+            Partida.Inicio();
         }
         public void Salir()
         {
-            Partida.DibujaPortada();
+            Partida.Inicio();
         }
 
     }

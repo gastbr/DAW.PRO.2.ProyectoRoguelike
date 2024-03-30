@@ -113,7 +113,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         }
         public void RecogeObjeto(Objeto objeto)
         {
-            inventario.Add(objeto);
+            // inventario.Add(objeto);
         }
 
         public void UsaObjeto(Objeto objeto)

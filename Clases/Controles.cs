@@ -38,7 +38,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     }
                     else if (cursor.y == yMenu + 2)
                     {
-                        Partida.DibujaPortada();
+                        Partida.Inicio();
                     }
                     else if (cursor.y == yMenu + 3)
                     {
@@ -54,7 +54,31 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     cursor.Mueve(Entidad.Direccion.arriba);
                 }
             }
+        }
+        public static int DetectaTeclaMenu(Cursor cursor)
+        {
+            int opcionElegida = 0;
+            cursor.Dibuja();
 
+            while (Partida.estado == Partida.Estado.Menu && opcionElegida == 0)
+            {
+                LimpiaBufferTecla();
+                tPulsada = Console.ReadKey(true).Key;
+
+                if (tPulsada == ConsoleKey.Enter || tPulsada == ConsoleKey.Spacebar || tPulsada == ConsoleKey.E || tPulsada == ConsoleKey.RightArrow)
+                {
+                    opcionElegida = cursor.Confirmar();
+                }
+                else if (tPulsada == tAbajo)
+                {
+                    cursor.Mueve(Entidad.Direccion.abajo);
+                }
+                else if (tPulsada == tArriba)
+                {
+                    cursor.Mueve(Entidad.Direccion.arriba);
+                }
+            }
+            return opcionElegida;
         }
         static void EligePersonaje(int xMenu, int yMenu)
         {
@@ -65,9 +89,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.WriteLine("              ");
             Console.SetCursorPosition(xMenu, yMenu + 1);
             Console.WriteLine("              ");
-
             Console.SetCursorPosition(xMenu - 3, yMenu);
             Console.WriteLine("  ");
+            Console.SetCursorPosition(xMenu, yMenu + 3);
+            Console.WriteLine("     ");
             Console.SetCursorPosition(xMenu, yMenu);
             Console.WriteLine("ELIGE PROFESIÓN:");
             Console.SetCursorPosition(xMenu, yMenu + 1);
@@ -99,16 +124,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     }
                     else if (cursor.y == yMenu + 2)
                     {
-                        Console.SetCursorPosition(xMenu, yMenu);
-                        Console.WriteLine("Introduce tu nombre:");
-                        Console.SetCursorPosition(xMenu, yMenu + 1);
-                        Console.WriteLine("        ");
-                        Console.SetCursorPosition(xMenu, yMenu + 2);
-                        Console.WriteLine("    ");
-                        Console.SetCursorPosition(xMenu, yMenu + 1);
-                        Console.CursorVisible = true;
-                        nombre = Console.ReadLine();
-                        Partida.NuevaPartida(nombre, Entidad.Profesion.Mago);
+                        //Console.SetCursorPosition(xMenu, yMenu);
+                        //Console.WriteLine("Introduce tu nombre:");
+                        //Console.SetCursorPosition(xMenu, yMenu + 1);
+                        //Console.WriteLine("        ");
+                        //Console.SetCursorPosition(xMenu, yMenu + 2);
+                        //Console.WriteLine("    ");
+                        //Console.SetCursorPosition(xMenu, yMenu + 1);
+                        //Console.CursorVisible = true;
+                        //nombre = Console.ReadLine();
+                        //Partida.NuevaPartida(nombre, Entidad.Profesion.Mago);
                     }
                 }
                 else if (tPulsada == tAbajo)
@@ -121,8 +146,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 }
             }
         }
-
-
         public static void DetectaTeclaJuego()
         {
             LimpiaBufferTecla();
@@ -170,8 +193,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Mapa.GetSala(0).DibujaSala();
             }
             Mueve(tPulsada);
-
         }
+
         static void Mueve(ConsoleKey tecla)
         {
             // No se puede usar un SWITCH porque el SWITCH no acepta variables como casos.
@@ -206,7 +229,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         {
             Pausa pausa = new Pausa();
             pausa.DibujaMenu();
-            
+
         }
         static void Habilidad() { }
         static void LimpiaBufferTecla()

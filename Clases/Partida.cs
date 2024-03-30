@@ -15,7 +15,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         static public Entidad protagonista;
         static int xMenu;
         static int yMenu;
-        public static void DibujaPortada()
+        public static void Inicio()
         {
             Interfaz.LimpiaPantalla();
             Console.CursorVisible = false;

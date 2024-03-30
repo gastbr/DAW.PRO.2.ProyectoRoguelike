@@ -5,7 +5,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Partida.DibujaPortada();
+        Partida.Inicio();
         Partida.BucleJuego();
     }
 }
