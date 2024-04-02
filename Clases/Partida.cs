@@ -71,6 +71,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.SetCursorPosition(xMenu, yMenu + 3);
             Console.WriteLine("SALIR");
             Controles.DetectaTeclaPortada(xMenu, yMenu);
+            Partida.BucleJuego();
         }
         public static void BucleJuego()
         {

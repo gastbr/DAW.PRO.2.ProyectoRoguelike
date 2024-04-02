@@ -6,6 +6,5 @@ internal class Program
     private static void Main(string[] args)
     {
         Partida.Inicio();
-        Partida.BucleJuego();
     }
 }
