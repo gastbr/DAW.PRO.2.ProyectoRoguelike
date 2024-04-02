@@ -34,6 +34,7 @@
             preX = x;
             preY = y;
             spawneado = true;
+            inventario = new List<Objeto>();
         }
         public void Camina(Direccion direccion)
         {
@@ -61,16 +62,21 @@
             }
 
         }
+        public virtual void Ataca()
+        {
+        }
         public string Ve()
         {
             string texto = "";
             if (ExaminaEntidad() is not null)
             {
                 texto = ExaminaEntidad().nombre;
-            } else if (ExaminaObjeto() is not null)
+            }
+            else if (ExaminaObjeto() is not null)
             {
                 texto = ExaminaObjeto().nombre;
-            } else
+            }
+            else
             {
                 texto = ExaminaCelda().nombre;
             }

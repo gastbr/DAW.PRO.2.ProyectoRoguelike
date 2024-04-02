@@ -31,7 +31,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             frases = File.ReadAllLines("./../../../Textos/FrasesMago");
         }
 
-        public void AtacaDistancia()
+        public override void Ataca()
         {
             throw new NotImplementedException();
         }

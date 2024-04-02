@@ -32,7 +32,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             this.y = y;
             spawneado = true;
         }
-        public void Aplica(Entidad jugador, int stat)
+        public virtual void Aplica(Entidad jugador)
         {
             // aplicar el efecto (+vida, +fuerza o +defensa) a la stat correspondiente del jugador correspondiente
         }

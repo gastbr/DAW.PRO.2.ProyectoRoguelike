@@ -32,6 +32,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             defensa = 0;
             frases = File.ReadAllLines("./../../../textos/FrasesGuerrero");
         }
+
         public override void Dibuja()
         {
             Console.SetCursorPosition(x, y);
@@ -39,7 +40,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
             Console.Write("@");
         }
 
-        public void AtacaMelee()
+        public override void Ataca()
         {
             throw new NotImplementedException();
         }
@@ -48,7 +49,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
         {
             throw new NotImplementedException();
         }
-
 
         public void Entra(Celda puerta)
         {
@@ -74,6 +74,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 spawneado = true;
             }
         }
+
         public override void Examina()
         {
             if (ExaminaObjeto() is not null)
@@ -111,9 +112,16 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Entidad
                 Habla();
             }
         }
+
         public void RecogeObjeto(Objeto objeto)
         {
-            // inventario.Add(objeto);
+            if (inventario.Count < 10)
+            {
+                inventario.Add(objeto);
+            } else
+            {
+                Interfaz.Escribe("Info", "El inventario está lleno.");
+            }
         }
 
         public void UsaObjeto(Objeto objeto)

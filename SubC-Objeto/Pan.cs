@@ -13,5 +13,10 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Objeto
         {
             nombre = "Pan";
         }
+
+        public override void Aplica(Entidad personaje)
+        {
+            personaje.RecibeCura(3);
+        }
     }
 }

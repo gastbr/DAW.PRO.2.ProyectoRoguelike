@@ -53,15 +53,33 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public void Inventario()
         {
-            DibujaMenu();
-            //Interfaz.LimpiaPantalla();
-            //Cursor cursor = new Cursor(x - 3, y, Partida.protagonista.inventario.Count);
-            //Console.SetCursorPosition(x, y);
-            //for (int i = 0; i < Partida.protagonista.inventario.Count; i++)
-            //{
-            //    Console.SetCursorPosition(x, y + i);
-            //    Console.WriteLine(Partida.protagonista.inventario[i]);
-            //}
+            Interfaz.LimpiaPantalla();
+            Cursor cursor = new Cursor(x - 3, y, Partida.protagonista.inventario.Count + 1);
+            Console.SetCursorPosition(x, y);
+
+            if (Partida.protagonista.inventario.Count > 0)
+            {
+                for (int i = 0; i < Partida.protagonista.inventario.Count; i++)
+                {
+                    Console.SetCursorPosition(x, y + i);
+                    Console.Write(Partida.protagonista.inventario[i]);
+                }
+            }
+            else
+            {
+                Console.SetCursorPosition(x, y - 1);
+                Console.Write("(vacío)");
+            }
+
+            Console.SetCursorPosition(x, y + Partida.protagonista.inventario.Count);
+            Console.Write("Continuar");
+            if (Controles.DetectaTeclaMenu(cursor) == Partida.protagonista.inventario.Count)
+            {
+                Continuar();
+            } else if (Controles.DetectaTeclaMenu(cursor) < Partida.protagonista.inventario.Count)
+            {
+                Partida.protagonista.inventario[Controles.DetectaTeclaMenu(cursor)].Aplica(Partida.protagonista);
+            }
         }
         public void GuardarSalir()
         {
