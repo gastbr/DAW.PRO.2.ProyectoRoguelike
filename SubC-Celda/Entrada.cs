@@ -11,7 +11,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Celda
     {
         public Entrada(int x, int y) : base(x, y)
         {
-            nombre = "Volver";
+            nombre = "Escaleras abajo";
         }
 
         public override void Dibuja()

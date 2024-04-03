@@ -13,5 +13,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Objeto
         {
             nombre = "Anillo";
         }
+        public override void Aplica(Entidad personaje)
+        {
+            personaje.defensa *= 2;
+        }
     }
 }

@@ -75,7 +75,6 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
         }
         public static void BucleJuego()
         {
-            estado = Estado.Partida;
             Mapa.GetSala(protagonista.salaActual).DibujaSala();
             while (estado == Estado.Partida)
             {
@@ -83,6 +82,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 Mapa.GetSala(protagonista.salaActual).DibujaEntidades();
                 Controles.DetectaTeclaJuego();
             }
+            estado = Estado.Partida;
         }
         public static void CargaPartida()
         {

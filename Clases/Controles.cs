@@ -91,6 +91,8 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             Console.WriteLine("              ");
             Console.SetCursorPosition(xMenu - 3, yMenu);
             Console.WriteLine("  ");
+            Console.SetCursorPosition(xMenu - 3, yMenu + 2);
+            Console.WriteLine("  ");
             Console.SetCursorPosition(xMenu, yMenu + 3);
             Console.WriteLine("     ");
             Console.SetCursorPosition(xMenu, yMenu);
@@ -124,16 +126,18 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                     }
                     else if (cursor.y == yMenu + 2)
                     {
-                        //Console.SetCursorPosition(xMenu, yMenu);
-                        //Console.WriteLine("Introduce tu nombre:");
-                        //Console.SetCursorPosition(xMenu, yMenu + 1);
-                        //Console.WriteLine("        ");
-                        //Console.SetCursorPosition(xMenu, yMenu + 2);
-                        //Console.WriteLine("    ");
-                        //Console.SetCursorPosition(xMenu, yMenu + 1);
-                        //Console.CursorVisible = true;
-                        //nombre = Console.ReadLine();
-                        //Partida.NuevaPartida(nombre, Entidad.Profesion.Mago);
+                        Console.SetCursorPosition(xMenu, yMenu);
+                        Console.WriteLine("Introduce tu nombre:");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.WriteLine("        ");
+                        Console.SetCursorPosition(xMenu, yMenu + 2);
+                        Console.WriteLine("    ");
+                        Console.SetCursorPosition(xMenu - 3, yMenu + 2);
+                        Console.WriteLine("    ");
+                        Console.SetCursorPosition(xMenu, yMenu + 1);
+                        Console.CursorVisible = true;
+                        nombre = Console.ReadLine();
+                        Partida.NuevaPartida(nombre, Entidad.Profesion.Mago);
                     }
                 }
                 else if (tPulsada == tAbajo)

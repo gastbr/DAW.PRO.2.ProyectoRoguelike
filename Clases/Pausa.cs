@@ -62,7 +62,7 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
                 for (int i = 0; i < Partida.protagonista.inventario.Count; i++)
                 {
                     Console.SetCursorPosition(x, y + i);
-                    Console.Write(Partida.protagonista.inventario[i]);
+                    Console.Write(Partida.protagonista.inventario[i].nombre);
                 }
             }
             else
@@ -76,9 +76,11 @@ namespace DAW.PRO._2.ProyectoRoguelike.Clases
             if (Controles.DetectaTeclaMenu(cursor) == Partida.protagonista.inventario.Count)
             {
                 Continuar();
-            } else if (Controles.DetectaTeclaMenu(cursor) < Partida.protagonista.inventario.Count)
+            }
+            else if (Controles.DetectaTeclaMenu(cursor) < Partida.protagonista.inventario.Count)
             {
                 Partida.protagonista.inventario[Controles.DetectaTeclaMenu(cursor)].Aplica(Partida.protagonista);
+                Partida.protagonista.inventario.Remove(Partida.protagonista.inventario[Controles.DetectaTeclaMenu(cursor)]);
             }
         }
         public void GuardarSalir()

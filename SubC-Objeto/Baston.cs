@@ -13,5 +13,9 @@ namespace DAW.PRO._2.ProyectoRoguelike.SubC_Objeto
         {
             nombre = "Baston";
         }
+        public override void Aplica(Entidad personaje)
+        {
+            personaje.ataque *= 2;
+        }
     }
 }
